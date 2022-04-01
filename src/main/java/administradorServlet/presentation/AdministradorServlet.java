@@ -23,10 +23,17 @@ public class AdministradorServlet extends HttpServlet {
             
             if(a.getID()==123456 && a.getClave()==123456 && a.getIngreso() == 3 ){
               request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response); 
-            }else{
+            }else
+                if(a.getIngreso()==2){
            
-                request.getRequestDispatcher("/FAIL.jsp").forward( request, response); 
-            }
+                
+            }else
+                if(a.getIngreso()==1){
+                
+                
+                }else{
+                
+                }
          
       
          }catch(IOException | NumberFormatException | ServletException e){
