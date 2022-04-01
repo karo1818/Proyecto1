@@ -11,12 +11,13 @@
     <head>
         <title>Sistema Administrador</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link rel="stylesheet" href="./css/Principal.css" type="text/css">
-    </head>
-    <body background="images/fondo.jpg">
-         <form method="POST" name="administrador" action="administrador/ingresar">
+      
+         <link href="../css/IngreAdmi.css" rel="stylesheet" type="text/css">
+    </head >
+    <body  background="../images/fondo.jpg">
        
-          <center>
+       
+         
          <header  class="header" >
           
          
@@ -28,25 +29,15 @@
        
         <div class="LOGIN">
             
-          <h1> LISTAS </h1>
-
+         <h2 class="listas" > LISTAS DISPONIBLES<br><br><br><br><br>
+         <a href="">Ciudades</a> <br><br><br>
+         <a href="">Especialidades</a> <br><br><br>
+         <a href="">Medicos</a> <br><br><br>
+         
+          </h2>
             <br>
-             <div class="form_section">
-                  <a href="">Ciudades</a> <br><br><br>
-                </div>
-          <br>
-                    
-            <div class="form_section">
-                
-                <a href="">Especialidades</a> <br><br><br>
-                </div>
-                    
-          
-            <br>
-                <div class="form_section_buttom">
-                       <a href="">Medicos</a> <br><br><br>
-                        </div>
-            
+             
+            </div>
            
             
             <br><br>
@@ -59,6 +50,6 @@
             <h2 class="lfooter">PROYECTO PROGRAMADO </h2>
         </footer>
         
-         <center>
+       
     </body>
 </html>
