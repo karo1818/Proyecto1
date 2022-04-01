@@ -3,7 +3,7 @@
     Created on : 31 mar 2022, 21:12:14
     Author     : karom
 --%>
-<%@page import="administradorServlet.logic.Medico"%>
+<%@page import="medicoServlet.logic.Medico"%>
 <%
     Medico m  = (Medico) request.getAttribute("medico");
   

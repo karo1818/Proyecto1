@@ -1,5 +1,5 @@
 package administradorServlet.presentation;
-import data.ConexionMySQL;
+
 import administradorServlet.logic.Administrador;
 import medicoServlet.logic.Medico;
 import pacienteServlet.logic.Paciente;

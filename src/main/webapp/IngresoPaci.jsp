@@ -3,9 +3,9 @@
     Created on : 31 mar 2022, 21:12:48
     Author     : karom
 --%>
-<%@page import="administradorServlet.logic.Medico"%>
+<%@page import="pacienteServlet.logic.Paciente"%>
 <%
-    Medico m  = (Medico) request.getAttribute("medico");
+    Paciente m  = (Paciente) request.getAttribute("paciente");
   
  %>
 <!DOCTYPE html>

@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.sql.*;
 
 public class ConexionMySQL {
+    private static ConexionMySQL instance;
     public Connection conexion;
     public Statement sentencia;
     public ResultSet resultado;
@@ -21,6 +22,7 @@ public class ConexionMySQL {
         }
     }
     
+    
 
     public ResultSet ejecutableSQL(String sql){  //Info que se va a traer
         try {
@@ -31,10 +33,6 @@ public class ConexionMySQL {
         }
         return resultado;
     }
-
-
-
-
 
     public void DesconectarBasedeDatos() {
         try {
@@ -58,7 +56,6 @@ public class ConexionMySQL {
         return sentencia.executeUpdate(SQL);
     }
     
-    
     public int cedula(String SQL) throws SQLException{
         Statement stmt = conexion.createStatement();
         ResultSet rs;
@@ -76,5 +73,7 @@ public class ConexionMySQL {
     public void insertar(String SQL) throws SQLException {
         sentencia.executeUpdate(SQL);
     }
+    
+    
 
 }
