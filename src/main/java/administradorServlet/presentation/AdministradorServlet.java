@@ -1,8 +1,8 @@
 package administradorServlet.presentation;
-
+import data.ConexionMySQL;
 import administradorServlet.logic.Administrador;
-import administradorServlet.logic.Medico;
-import administradorServlet.logic.Paciente;
+import medicoServlet.logic.Medico;
+import pacienteServlet.logic.Paciente;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +17,8 @@ public class AdministradorServlet extends HttpServlet {
          Administrador a;
          Medico m;
          Paciente p;
+         
+         
          try{
          
             a=new Administrador(Double.parseDouble(request.getParameter("ID")), 

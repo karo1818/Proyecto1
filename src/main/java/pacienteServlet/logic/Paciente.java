@@ -2,14 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package administradorServlet.logic;
+package pacienteServlet.logic;
 
 /**
  *
  * @author karom
  */
-public class Medico {
- 
+public class Paciente {
+    
+    
       private double ID;
       private double clave;
       private double ingreso;
@@ -42,19 +43,19 @@ public class Medico {
  
     
 
-    public Medico(double i, double c, double in) {
+    public Paciente(double i, double c, double in) {
         
         ID= i;
         clave= c;
         ingreso= in;
     }
     
-    public Medico() {
-        
+    public Paciente() {
     }
 
 
 
+    
     
     
     
