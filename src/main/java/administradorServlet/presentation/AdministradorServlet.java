@@ -1,6 +1,8 @@
 package administradorServlet.presentation;
 
 import administradorServlet.logic.Administrador;
+import administradorServlet.logic.Medico;
+import administradorServlet.logic.Paciente;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,26 +15,41 @@ public class AdministradorServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
          Administrador a;
+         Medico m;
+         Paciente p;
          try{
          
-           a=new Administrador(Double.parseDouble(request.getParameter("ID")), 
+            a=new Administrador(Double.parseDouble(request.getParameter("ID")), 
             Double.parseDouble(request.getParameter("clave")),
-           Double.parseDouble(request.getParameter("ingreso")));
+            Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("administrador", a);
+            
+
+            p=new Paciente(Double.parseDouble(request.getParameter("ID")), 
+            Double.parseDouble(request.getParameter("clave")),
+            Double.parseDouble(request.getParameter("ingreso")));
+            request.setAttribute("paciente", p);
+                    
+                    
+            m=new Medico(Double.parseDouble(request.getParameter("ID")), 
+            Double.parseDouble(request.getParameter("clave")),
+            Double.parseDouble(request.getParameter("ingreso")));
+            request.setAttribute("medico", m);
            
             
-            if(a.getID()==123456 && a.getClave()==123456 && a.getIngreso() == 3 ){
+            if(a.getID()== 1 && a.getClave()== 1 && a.getIngreso() == 1 ){
               request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response); 
             }else
-                if(a.getIngreso()==2){
+                if(a.getID()== 2 && a.getClave()== 2 && a.getIngreso()==2){
            
-                
+                request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response); 
             }else
-                if(a.getIngreso()==1){
+                if(a.getID()== 3 && a.getClave()== 3 && a.getIngreso()==3){
                 
-                
+                request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response); 
                 }else{
                 
+                    request.getRequestDispatcher("/FAIL.jsp").forward( request, response); 
                 }
          
       
