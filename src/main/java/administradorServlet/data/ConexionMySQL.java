@@ -1,4 +1,4 @@
-package data;
+package administradorServlet.data;
 import javax.swing.*;
 import java.sql.*;
 import java.sql.CallableStatement;
@@ -21,14 +21,15 @@ public class ConexionMySQL {
 
     public static Connection ConectarBasedeDatos() {
         try {
-            final String Controlador = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-            Class.forName(Controlador);
-            final String url_bd = "jdbc:sqlserver://localhost:49692;databaseName=ProyectoCitasMedicas;";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url_bd = "jdbc:sqlserver://localhost:1433;database=ProyectoCitasMedicas;";
             conexion = DriverManager.getConnection(url_bd, "sa", "password");
             sentencia = conexion.createStatement();
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error ", JOptionPane.ERROR_MESSAGE);
-        }
+        }System.out.println(conexion);
+        return conexion;
+
     }
     
     

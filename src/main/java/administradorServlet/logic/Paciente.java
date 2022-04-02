@@ -4,8 +4,10 @@
  */
 package administradorServlet.logic;
 
+import administradorServlet.data.ConexionMySQL;
+
 import java.util.List;
-import data.ConexionMySQL;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
