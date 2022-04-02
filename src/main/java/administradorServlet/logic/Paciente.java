@@ -9,11 +9,10 @@ package administradorServlet.logic;
  * @author karom
  */
 public class Paciente {
-    
-    
       private double ID;
-      private double clave;
+      private String clave;
       private double ingreso;
+      private String nombre;
 
     public double getIngreso() {
         return ingreso;
@@ -31,11 +30,11 @@ public class Paciente {
         this.ID = ID;
     }
 
-    public double getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(double clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
   
@@ -43,21 +42,15 @@ public class Paciente {
  
     
 
-    public Paciente(double i, double c, double in) {
+    public Paciente(double i, String c, double in, String n) {
         
         ID= i;
         clave= c;
         ingreso= in;
+        nombre=n;
     }
     
     public Paciente() {
     }
-
-
-
-    
-    
-    
-    
-    
+  
 }
