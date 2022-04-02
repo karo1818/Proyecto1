@@ -18,6 +18,7 @@ import administradorServlet.logic.Paciente;
 
 public class main {
     public static void main(String[] args) {
-
+        Paciente pac = new Paciente();
+        pac.pacientesBD(pac);
     }
 }

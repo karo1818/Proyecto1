@@ -1,16 +1,25 @@
 package data;
 import javax.swing.*;
 import java.sql.*;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ConexionMySQL {
     private static ConexionMySQL instance;
-    public Connection conexion;
-    public Statement sentencia;
+    public static Connection conexion;
+    public static Statement sentencia;
     public ResultSet resultado;
 
+    public ConexionMySQL() {
+        
+    }
 
 
-    public void ConectarBasedeDatos() {
+
+    public static Connection ConectarBasedeDatos() {
         try {
             final String Controlador = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             Class.forName(Controlador);

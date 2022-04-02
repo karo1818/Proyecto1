@@ -5,6 +5,12 @@
 package administradorServlet.logic;
 
 import java.util.List;
+import data.ConexionMySQL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -45,15 +51,37 @@ public class Paciente {
         return nombre;
     }
     
-    public Paciente(double i, String c, double in, String n) {
+    public Paciente(double i, String c, String n) {
         
         ID= i;
         clave= c;
-        ingreso= in;
         nombre=n;
     }
     
     public Paciente() {
+    }
+    
+    public List<Paciente> pacientesBD(Paciente p){
+    
+        List<Paciente> per = new ArrayList();
+
+        Connection con = null;
+        try {
+            con = ConexionMySQL.ConectarBasedeDatos();
+            CallableStatement statement = con.prepareCall("select * from Pacientes");
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+
+                Paciente cue;
+                cue = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"));
+                per.add(cue);
+
+            }
+
+            con.close();
+        } catch (SQLException e) {
+        }
+        return per;
     }
   
 }
