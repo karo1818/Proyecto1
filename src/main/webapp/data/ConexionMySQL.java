@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.sql.*;
 
 public class ConexionMySQL {
+    private static ConexionMySQL instance;
     public Connection conexion;
     public Statement sentencia;
     public ResultSet resultado;
@@ -13,13 +14,14 @@ public class ConexionMySQL {
         try {
             final String Controlador = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             Class.forName(Controlador);
-            final String url_bd = "jdbc:sqlserver://localhost\\MSSQLSERVER01:12980;databaseName=ProyectoCitasMedicas;";
+            final String url_bd = "jdbc:sqlserver://localhost:49692;databaseName=ProyectoCitasMedicas;";
             conexion = DriverManager.getConnection(url_bd, "sa", "password");
             sentencia = conexion.createStatement();
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error ", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
     
 
     public ResultSet ejecutableSQL(String sql){  //Info que se va a traer
@@ -31,10 +33,6 @@ public class ConexionMySQL {
         }
         return resultado;
     }
-
-
-
-
 
     public void DesconectarBasedeDatos() {
         try {
@@ -58,7 +56,6 @@ public class ConexionMySQL {
         return sentencia.executeUpdate(SQL);
     }
     
-    
     public int cedula(String SQL) throws SQLException{
         Statement stmt = conexion.createStatement();
         ResultSet rs;
@@ -76,5 +73,7 @@ public class ConexionMySQL {
     public void insertar(String SQL) throws SQLException {
         sentencia.executeUpdate(SQL);
     }
+    
+    
 
 }

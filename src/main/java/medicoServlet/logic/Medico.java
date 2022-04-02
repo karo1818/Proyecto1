@@ -2,20 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package administradorServlet.logic;
-
-import java.util.List;
+package medicoServlet.logic;
 
 /**
  *
  * @author karom
  */
-public class Paciente {
+public class Medico {
+ 
       private double ID;
-      private String clave;
+      private double clave;
       private double ingreso;
-      private String nombre;
-      List <Citas> citasPac;
 
     public double getIngreso() {
         return ingreso;
@@ -33,27 +30,33 @@ public class Paciente {
         this.ID = ID;
     }
 
-    public String getClave() {
+    public double getClave() {
         return clave;
     }
 
-    public void setClave(String clave) {
+    public void setClave(double clave) {
         this.clave = clave;
     }
+  
+ 
+ 
     
-    public String getNombre(){
-        return nombre;
-    }
-    
-    public Paciente(double i, String c, double in, String n) {
+
+    public Medico(double i, double c, double in) {
         
         ID= i;
         clave= c;
         ingreso= in;
-        nombre=n;
     }
     
-    public Paciente() {
+    public Medico() {
+        
     }
-  
+
+
+
+    
+    
+    
+    
 }

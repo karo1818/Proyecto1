@@ -13,11 +13,11 @@ package administradorServlet.logic;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
-import data.ConexionMySQL;
+
 import administradorServlet.logic.Paciente;
 
 public class main {
     public static void main(String[] args) {
-       
+
     }
 }
