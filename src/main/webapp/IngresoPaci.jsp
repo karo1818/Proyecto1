@@ -5,7 +5,7 @@
 --%>
 <%@page import="pacienteServlet.logic.Paciente"%>
 <%
-    Paciente m  = (Paciente) request.getAttribute("paciente");
+    Paciente p  = (Paciente) request.getAttribute("paciente");
   
  %>
 <!DOCTYPE html>

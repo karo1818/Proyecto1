@@ -4,6 +4,7 @@
  */
 package administradorServlet.logic;
 
+import pacienteServlet.logic.Citas;
 import administradorServlet.data.ConexionMySQL;
 
 import java.util.List;

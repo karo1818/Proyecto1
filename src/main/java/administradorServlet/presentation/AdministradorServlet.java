@@ -45,7 +45,7 @@ public class AdministradorServlet extends HttpServlet {
                 
                 
         
-                if(p.getID()== 2 && p.getClave()== 2 && p.getIngreso() == 2 ){
+            if(p.getID()== 2 && p.getClave()== 2 && p.getIngreso() == 2 ){
                     
                     
                     
@@ -54,14 +54,13 @@ public class AdministradorServlet extends HttpServlet {
             
 
               
-            }else 
-                    if(m.getID()== 3 && m.getClave()== 3 && m.getIngreso() == 3){
+            }else if(m.getID()== 3 && m.getClave()== 3 && m.getIngreso() == 3){
               request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
             
-            }{
-
+            }
+            {
                     request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-                }
+            }
 
 
          }catch(IOException | NumberFormatException | ServletException e){

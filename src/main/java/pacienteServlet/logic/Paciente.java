@@ -3,17 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pacienteServlet.logic;
+import administradorServlet.data.ConexionMySQL;
+import administradorServlet.logic.Citas;
+
+import java.util.List;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
  * @author karom
  */
 public class Paciente {
-    
-    
       private double ID;
-      private double clave;
+      private String clave;
       private double ingreso;
+      private String nombre;
+      List <Citas> citasPac;
 
     public double getIngreso() {
         return ingreso;
@@ -31,33 +41,55 @@ public class Paciente {
         this.ID = ID;
     }
 
-    public double getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(double clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
-  
- 
- 
     
-
-    public Paciente(double i, double c, double in) {
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public Pacientes2(double i, String c, String n) {
         
         ID= i;
         clave= c;
-        ingreso= in;
+        nombre=n;
     }
     
-    public Paciente() {
+    public Pacientes2() {
     }
 
+    @Override
+    public String toString() {
+        return "Pacientes2{" + "ID=" + ID + ", nombre=" + nombre + '}';
+    }
+    
+    
+    public ArrayList<Pacientes2> pacientesBD(){
 
+        ArrayList<Pacientes2> per = new ArrayList();
 
-    
-    
-    
-    
-    
+        Connection con = null;
+        try {
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            CallableStatement statement = con.prepareCall("SELECT * FROM Pacientes");
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+
+                Pacientes2 cue;
+                cue = new Pacientes2(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"));
+                per.add(cue);
+
+            }
+
+            con.close();
+        } catch (SQLException e) {
+        }
+        return per;
+    }
+  
 }

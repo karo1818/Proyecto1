@@ -1,4 +1,4 @@
-package administradorServlet.logic;
+package pacienteServlet.logic;
 
 public class Citas {
     private double id;
