@@ -10,15 +10,12 @@ package administradorServlet.logic;
  * @author gabri
  */
 
-import java.io.IOException;
-import java.net.Socket;
-import java.util.List;
-
-import administradorServlet.logic.Paciente;
-
 public class main {
     public static void main(String[] args) {
-        Paciente pac = new Paciente();
-        pac.pacientesBD(pac);
+        Pacientes2 pac = new Pacientes2();
+        System.out.println("INICIO");
+        System.out.println(pac.pacientesBD(new Pacientes2()));
+        System.out.println("FIN");
+
     }
 }

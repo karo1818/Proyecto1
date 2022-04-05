@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author karom
  */
-public class Paciente {
+public class Pacientes2 {
       private double ID;
       private String clave;
       private double ingreso;
@@ -53,29 +53,29 @@ public class Paciente {
         return nombre;
     }
     
-    public Paciente(double i, String c, String n) {
+    public Pacientes2(double i, String c, String n) {
         
         ID= i;
         clave= c;
         nombre=n;
     }
     
-    public Paciente() {
+    public Pacientes2() {
     }
     
-    public List<Paciente> pacientesBD(Paciente p){
-    
-        List<Paciente> per = new ArrayList();
+    public ArrayList<Pacientes2> pacientesBD(Pacientes2 p){
+
+        ArrayList<Pacientes2> per = new ArrayList();
 
         Connection con = null;
         try {
             con = ConexionMySQL.ConectarBasedeDatos();
-            CallableStatement statement = con.prepareCall("select * from Pacientes");
+            CallableStatement statement = con.prepareCall("SELECT * FROM Pacientes");
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
 
-                Paciente cue;
-                cue = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"));
+                Pacientes2 cue;
+                cue = new Pacientes2(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"));
                 per.add(cue);
 
             }
