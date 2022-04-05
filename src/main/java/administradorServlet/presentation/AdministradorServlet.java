@@ -17,7 +17,7 @@ public class AdministradorServlet extends HttpServlet {
          Administrador a;
          Paciente p;
          Medico m;
-   
+         
 
          try{
 
@@ -32,7 +32,8 @@ public class AdministradorServlet extends HttpServlet {
             request.setAttribute("medico", m);
 
             p=new Paciente(Double.parseDouble(request.getParameter("ID")),
-            Double.parseDouble(request.getParameter("clave")),
+            (request.getParameter("clave")),
+            (request.getParameter("nombre")),
             Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("paciente", p);
             
@@ -45,11 +46,8 @@ public class AdministradorServlet extends HttpServlet {
                 
                 
         
-            if(p.getID()== 2 && p.getClave()== 2 && p.getIngreso() == 2 ){
-                    
-                    
-                    
-                    
+            if(p.getID()== 2 && p.getClave().equals("2") && p.getIngreso() == 2 ){
+  
               request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
             
 

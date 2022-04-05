@@ -4,7 +4,7 @@
  */
 package pacienteServlet.logic;
 import administradorServlet.data.ConexionMySQL;
-import administradorServlet.logic.Citas;
+import pacienteServlet.logic.Citas;
 
 import java.util.List;
 
@@ -53,14 +53,15 @@ public class Paciente {
         return nombre;
     }
     
-    public Pacientes2(double i, String c, String n) {
+    public Paciente(double i, String c, String n, double in) {
         
         ID= i;
         clave= c;
         nombre=n;
+        ingreso=in;
     }
     
-    public Pacientes2() {
+    public Paciente() {
     }
 
     @Override
@@ -69,9 +70,9 @@ public class Paciente {
     }
     
     
-    public ArrayList<Pacientes2> pacientesBD(){
+    public ArrayList<Paciente> pacientesBD(){
 
-        ArrayList<Pacientes2> per = new ArrayList();
+        ArrayList<Paciente> per = new ArrayList();
 
         Connection con = null;
         try {
@@ -80,8 +81,8 @@ public class Paciente {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
 
-                Pacientes2 cue;
-                cue = new Pacientes2(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"));
+                Paciente cue;
+                cue = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), rs.getDouble("ingreso"));
                 per.add(cue);
 
             }

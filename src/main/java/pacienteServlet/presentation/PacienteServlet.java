@@ -26,26 +26,27 @@ public class PacienteServlet extends HttpServlet {
          Paciente p;
 
 
-         try{
-
-            p=new Paciente(Double.parseDouble(request.getParameter("ID")),
-            Double.parseDouble(request.getParameter("clave")),
-            Double.parseDouble(request.getParameter("ingreso")));
-            request.setAttribute("paciente", p);
-
-
-            if(p.getID()== 2 && p.getClave()== 2 && p.getIngreso() == 2 ){
-             request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
-            }else{
-
-                    request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-                }
-         
-
-
-         }catch(IOException | NumberFormatException | ServletException e){
-            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-         }
+//         try{
+//
+//            p=new Paciente(Double.parseDouble(request.getParameter("ID")),
+//            (request.getParameter("clave")),
+//            (request.getParameter("nombre")),
+//            Double.parseDouble(request.getParameter("ingreso")));
+//            request.setAttribute("paciente", p);
+//
+//
+//            if(p.getID()== 2 && p.getClave()== 2 && p.getIngreso() == 2 ){
+//             request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
+//            }else{
+//
+//                    request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+//                }
+//         
+//
+//
+//         }catch(IOException | NumberFormatException | ServletException e){
+//            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+//         }
 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

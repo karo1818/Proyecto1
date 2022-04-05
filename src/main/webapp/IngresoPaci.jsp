@@ -3,10 +3,11 @@
     Created on : 31 mar 2022, 21:12:48
     Author     : karom
 --%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="pacienteServlet.logic.Paciente"%>
 <%
     Paciente p  = (Paciente) request.getAttribute("paciente");
-  
+    DecimalFormat df = new DecimalFormat("####,###");
  %>
 <!DOCTYPE html>
 <html>
@@ -22,7 +23,8 @@
         <div class="header">
             
             <img class="avatar" src="../images/perfil.png" width="256" height="256">
-            <h1 class="user-name" >USUARIO</h1>
+            <h1 class="user-name">USUARIO</h1>
+            <%=p.getClave()+"CLAVE"%>             
             </div>
         
         
