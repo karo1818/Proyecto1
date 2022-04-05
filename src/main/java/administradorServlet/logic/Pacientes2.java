@@ -62,14 +62,20 @@ public class Pacientes2 {
     
     public Pacientes2() {
     }
+
+    @Override
+    public String toString() {
+        return "Pacientes2{" + "ID=" + ID + ", nombre=" + nombre + '}';
+    }
     
-    public ArrayList<Pacientes2> pacientesBD(Pacientes2 p){
+    
+    public ArrayList<Pacientes2> pacientesBD(){
 
         ArrayList<Pacientes2> per = new ArrayList();
 
         Connection con = null;
         try {
-            con = ConexionMySQL.ConectarBasedeDatos();
+            con = ConexionMySQL.ConectarBasedeDatos1();
             CallableStatement statement = con.prepareCall("SELECT * FROM Pacientes");
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {

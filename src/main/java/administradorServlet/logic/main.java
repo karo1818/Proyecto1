@@ -14,7 +14,7 @@ public class main {
     public static void main(String[] args) {
         Pacientes2 pac = new Pacientes2();
         System.out.println("INICIO");
-        System.out.println(pac.pacientesBD(new Pacientes2()));
+        System.out.println(pac.pacientesBD().toString());
         System.out.println("FIN");
 
     }
