@@ -1,23 +1,23 @@
 package administradorServlet.presentation;
 
 import administradorServlet.logic.Administrador;
-import medicoServlet.logic.Medico;
-import pacienteServlet.logic.Paciente;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import medicoServlet.logic.Medico;
+import pacienteServlet.logic.Paciente;
 
 @WebServlet(name = "AdministradorServlet", urlPatterns = {"/administrador/ingresar"})
 public class AdministradorServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
          Administrador a;
-         Medico m;
          Paciente p;
-
+         Medico m;
+   
 
          try{
 
@@ -26,30 +26,39 @@ public class AdministradorServlet extends HttpServlet {
             Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("administrador", a);
 
-
-            p=new Paciente(Double.parseDouble(request.getParameter("ID")),
-            Double.parseDouble(request.getParameter("clave")),
-            Double.parseDouble(request.getParameter("ingreso")));
-            request.setAttribute("paciente", p);
-
-
             m=new Medico(Double.parseDouble(request.getParameter("ID")),
             Double.parseDouble(request.getParameter("clave")),
             Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("medico", m);
 
+            p=new Paciente(Double.parseDouble(request.getParameter("ID")),
+            Double.parseDouble(request.getParameter("clave")),
+            Double.parseDouble(request.getParameter("ingreso")));
+            request.setAttribute("paciente", p);
+            
+            
 
             if(a.getID()== 1 && a.getClave()== 1 && a.getIngreso() == 1 ){
               request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);
-            }else
-                if(a.getID()== 2 && a.getClave()== 2 && a.getIngreso()==2){
+            
+            } else 
+                
+                
+        
+                if(p.getID()== 2 && p.getClave()== 2 && p.getIngreso() == 2 ){
+                    
+                    
+                    
+                    
+              request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
+            
 
-                request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
-            }else
-                if(a.getID()== 3 && a.getClave()== 3 && a.getIngreso()==3){
-
-                request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
-                }else{
+              
+            }else 
+                    if(m.getID()== 3 && m.getClave()== 3 && m.getIngreso() == 3){
+              request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
+            
+            }{
 
                     request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
                 }
