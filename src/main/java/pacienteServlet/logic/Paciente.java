@@ -69,7 +69,22 @@ public class Paciente {
         return "Pacientes2{" + "ID=" + ID + ", nombre=" + nombre + '}';
     }
     
-    
+    public Paciente busqPaciente(double id2, String clave2){
+        Connection con = null;
+        Paciente paciente = null;
+        try {
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            CallableStatement statement = con.prepareCall("SELECT * FROM Pacientes WHERE Pacientes.id = "+id2+" and Pacientes.clave= '"+clave2+"'");
+            ResultSet rs = statement.executeQuery();
+                          
+            paciente = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 2);
+            
+            con.close();
+        } catch (SQLException e) {
+            
+        }
+        return paciente;
+    }
     public ArrayList<Paciente> pacientesBD(){
 
         ArrayList<Paciente> per = new ArrayList();

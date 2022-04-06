@@ -42,14 +42,10 @@ public class AdministradorServlet extends HttpServlet {
             if(a.getID()== 1 && a.getClave()== 1 && a.getIngreso() == 1 ){
               request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);
             
-            } else 
-                
-                
-        
-            if(p.getID()== 2 && p.getClave().equals("2") && p.getIngreso() == 2 ){
-  
-              request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
-            
+            } else if(p == null ){
+                if(p.busqPaciente(p.getID(), p.getClave()) != null){
+                    request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
+                }
 
               
             }else if(m.getID()== 3 && m.getClave()== 3 && m.getIngreso() == 3){

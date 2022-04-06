@@ -30,7 +30,6 @@
         
         <div class="segundo">
             <ul class="social">
-                
                
                     <input type="text" name="especialidad" class="form_input" placeholder="Especialidad a buscar">
                               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
