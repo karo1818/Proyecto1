@@ -121,35 +121,7 @@ public class Paciente {
     }
     
     
-    
-        public boolean LOGIN(double id2, String clave2){
-        try {
-            ConexionMySQL con  = new ConexionMySQL();
-            con.ConectarBasedeDatos();
-            
-            String SQL="SELECT * FROM Pacientes WHERE Pacientes.id = "+id2+" and Pacientes.clave= '"+clave2+"'";
-            con.resultado = con.sentencia.executeQuery(SQL);
 
-            if(con.resultado.next()){
-   
-                return true;
-
-
-            }else{
-                return false;
-
-            }
-
-        } catch (SQLException exception) {
-           
-        }
-          return false;
-    }
-        
-        
-
- 
-    
     
   
 }
