@@ -17,12 +17,12 @@ public class AdministradorServlet extends HttpServlet {
          Administrador a;
          Paciente p;
          Medico m;
-      
+          
 
          try{
 
             a=new Administrador(Double.parseDouble(request.getParameter("ID")),
-            Double.parseDouble(request.getParameter("clave")),
+            Double.parseDouble(request.getParameter("clave")),           
             Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("administrador", a);
 
@@ -35,34 +35,51 @@ public class AdministradorServlet extends HttpServlet {
             (request.getParameter("clave")),
             Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("paciente", p);
+               
            
+            int respingreso=(int) a.getIngreso();
             
+            switch(respingreso){
             
-
-            if(a.getID()== 1 && a.getClave()== 1 && a.getIngreso() == 1 ){
-              request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);
+                case 1:
+                    
+                    if(a.getID()== 1 && a.getClave()== 1){
+                   request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);
             
-            }else
+                     }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);       }
             
-            if( p.getIngreso()== 2 && p.LOGIN(p.getID(), p.getClave()) == true){
+                     break;
+                    
+                case 2:    
+                      
+                    if( p.busqPaciente(p.getID(), p.getClave()) == true){
                 
-                request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
+                  request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
                 
-            }else
-                
+                  }else{ request.getRequestDispatcher("/FAIL.jsp").forward( request, response);    }
+                    
+                     break;
+                    
+                case 3:    
+            
+                     if(a.getID()== 3 && a.getClave()== 3){
+                     request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
+            
+                     }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);       }
                      
-            if(m.getID()== 3 && m.getClave()== 3 && m.getIngreso() == 3){
-              request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
-            
-            }else
-            {
-                    request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+                     break;
+                     
+                default:
+                
+                   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+                    break;
+                    
             }
-
-
-         }catch(IOException | NumberFormatException | ServletException e){
-            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+            
+         }catch(Exception e){
+           request.getRequestDispatcher("/FAIL.jsp").forward( request, response);  
          }
+   
 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
