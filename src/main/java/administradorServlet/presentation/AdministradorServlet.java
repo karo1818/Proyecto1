@@ -2,8 +2,6 @@ package administradorServlet.presentation;
 
 import administradorServlet.logic.Administrador;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +17,7 @@ public class AdministradorServlet extends HttpServlet {
          Administrador a;
          Paciente p;
          Medico m;
-        Paciente pac = new Paciente();
+      
 
          try{
 
@@ -46,10 +44,13 @@ public class AdministradorServlet extends HttpServlet {
             
             }else
             
-            if(p.getIngreso() == 2 && p.busqPaciente(p.getID(), p.getClave()) != false){
-                //request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
+            if( p.getIngreso()== 2 && p.LOGIN(p.getID(), p.getClave()) == true){
+                
                 request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
+                
             }else
+                
+                     
             if(m.getID()== 3 && m.getClave()== 3 && m.getIngreso() == 3){
               request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
             

@@ -4,6 +4,7 @@
  */
 package pacienteServlet.logic;
 import administradorServlet.data.ConexionMySQL;
+import static java.lang.System.out;
 import pacienteServlet.logic.Citas;
 
 import java.util.List;
@@ -88,11 +89,14 @@ public class Paciente {
                 paciente = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 2);
             }
             con.close();
+            return paciente != null;
         } catch (SQLException e) {
             return false;
         }
-        return true;
+        
     }
+    
+    
     public ArrayList<Paciente> pacientesBD(){
 
         ArrayList<Paciente> per = new ArrayList();
@@ -115,5 +119,37 @@ public class Paciente {
         }
         return per;
     }
+    
+    
+    
+        public boolean LOGIN(double id2, String clave2){
+        try {
+            ConexionMySQL con  = new ConexionMySQL();
+            con.ConectarBasedeDatos();
+            
+            String SQL="SELECT * FROM Pacientes WHERE Pacientes.id = "+id2+" and Pacientes.clave= '"+clave2+"'";
+            con.resultado = con.sentencia.executeQuery(SQL);
+
+            if(con.resultado.next()){
+   
+                return true;
+
+
+            }else{
+                return false;
+
+            }
+
+        } catch (SQLException exception) {
+           
+        }
+          return false;
+    }
+        
+        
+
+ 
+    
+    
   
 }

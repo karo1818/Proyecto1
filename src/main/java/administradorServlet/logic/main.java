@@ -16,7 +16,7 @@ public class main {
         Paciente pac = new Paciente();
         System.out.println("INICIO");
         
-        System.out.println(pac.busqPaciente(12, "hola23"));
+        System.out.println(pac.LOGIN(12, "hola123"));
         System.out.println("FIN");
 
     }
