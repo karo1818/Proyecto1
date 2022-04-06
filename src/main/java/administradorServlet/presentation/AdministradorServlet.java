@@ -2,6 +2,8 @@ package administradorServlet.presentation;
 
 import administradorServlet.logic.Administrador;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +19,7 @@ public class AdministradorServlet extends HttpServlet {
          Administrador a;
          Paciente p;
          Medico m;
-         
+        Paciente pac = new Paciente();
 
          try{
 
@@ -33,25 +35,25 @@ public class AdministradorServlet extends HttpServlet {
 
             p=new Paciente(Double.parseDouble(request.getParameter("ID")),
             (request.getParameter("clave")),
-            (request.getParameter("nombre")),
             Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("paciente", p);
+           
             
             
 
             if(a.getID()== 1 && a.getClave()== 1 && a.getIngreso() == 1 ){
               request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);
             
-            } else if(p == null ){
-                if(p.busqPaciente(p.getID(), p.getClave()) != null){
-                    request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
-                }
-
-              
-            }else if(m.getID()== 3 && m.getClave()== 3 && m.getIngreso() == 3){
+            }else
+            
+            if(p.getIngreso() == 2 && p.busqPaciente(p.getID(), p.getClave()) != false){
+                //request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
+                request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
+            }else
+            if(m.getID()== 3 && m.getClave()== 3 && m.getIngreso() == 3){
               request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
             
-            }
+            }else
             {
                     request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
             }

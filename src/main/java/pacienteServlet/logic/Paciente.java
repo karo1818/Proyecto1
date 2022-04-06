@@ -52,6 +52,12 @@ public class Paciente {
     public String getNombre(){
         return nombre;
     }
+    public Paciente(double i, String c, double in) {
+        
+        ID= i;
+        clave= c;
+        ingreso=in;
+    }
     
     public Paciente(double i, String c, String n, double in) {
         
@@ -66,24 +72,26 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Pacientes2{" + "ID=" + ID + ", nombre=" + nombre + '}';
+        return "Paciente{" + "ID=" + ID + ", clave=" + clave + ", ingreso=" + ingreso + ", nombre=" + nombre + '}';
     }
+
     
-    public Paciente busqPaciente(double id2, String clave2){
+    
+    public boolean busqPaciente(double id2, String clave2){
         Connection con = null;
         Paciente paciente = null;
         try {
             con = ConexionMySQL.ConectarBasedeDatos1();
             CallableStatement statement = con.prepareCall("SELECT * FROM Pacientes WHERE Pacientes.id = "+id2+" and Pacientes.clave= '"+clave2+"'");
             ResultSet rs = statement.executeQuery();
-                          
-            paciente = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 2);
-            
+            while(rs.next()){
+                paciente = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 2);
+            }
             con.close();
         } catch (SQLException e) {
-            
+            return false;
         }
-        return paciente;
+        return true;
     }
     public ArrayList<Paciente> pacientesBD(){
 

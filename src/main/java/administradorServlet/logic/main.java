@@ -13,10 +13,11 @@ import pacienteServlet.logic.Paciente;
 
 public class main {
     public static void main(String[] args) {
-//        Paciente pac = new Paciente();
-//        System.out.println("INICIO");
-//        System.out.println(pac.pacientesBD().toString());
-//        System.out.println("FIN");
+        Paciente pac = new Paciente();
+        System.out.println("INICIO");
+        
+        System.out.println(pac.busqPaciente(12, "hola23"));
+        System.out.println("FIN");
 
     }
 }
