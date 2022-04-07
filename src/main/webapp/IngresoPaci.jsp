@@ -23,8 +23,8 @@
         <div class="header">
             
             <img class="avatar" src="../images/perfil.png" width="256" height="256">
-            <h1 class="user-name">USUARIO</h1>
-            <%=p.getClave()+"CLAVE"%>             
+            <h1 class="user-name"> <%=p.getNombre()%></h1>
+                       
             </div>
         
         

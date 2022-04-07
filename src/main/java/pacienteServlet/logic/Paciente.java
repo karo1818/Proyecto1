@@ -4,11 +4,8 @@
  */
 package pacienteServlet.logic;
 import administradorServlet.data.ConexionMySQL;
-import static java.lang.System.out;
 import pacienteServlet.logic.Citas;
-
 import java.util.List;
-
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,6 +16,7 @@ import java.util.ArrayList;
  *
  * @author karom
  */
+
 public class Paciente {
       private double ID;
       private String clave;
@@ -86,7 +84,7 @@ public class Paciente {
             CallableStatement statement = con.prepareCall("SELECT * FROM Pacientes WHERE Pacientes.id = "+id2+" and Pacientes.clave= '"+clave2+"'");
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                paciente = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 2);
+              paciente = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 2);
             }
             con.close();
             return paciente != null;
@@ -121,7 +119,7 @@ public class Paciente {
     }
     
     
-
     
+
   
 }

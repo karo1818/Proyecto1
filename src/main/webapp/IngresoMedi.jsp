@@ -3,10 +3,11 @@
     Created on : 31 mar 2022, 21:12:14
     Author     : karom
 --%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="medicoServlet.logic.Medico"%>
 <%
     Medico m  = (Medico) request.getAttribute("medico");
-  
+    DecimalFormat df = new DecimalFormat("####,###");
  %>
 <!DOCTYPE html>
 <html>

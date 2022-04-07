@@ -9,14 +9,17 @@ package administradorServlet.logic;
  *
  * @author gabri
  */
-import pacienteServlet.logic.Paciente;
+import medicoServlet.logic.Medico;
+
 
 public class main {
     public static void main(String[] args) {
-        Paciente pac = new Paciente();
+    
+        Medico med= new Medico();
         System.out.println("INICIO");
-        System.out.println(pac.busqPaciente(14, "hola123"));
+        System.out.println(med.busqMedico(15, "123"));
         System.out.println("FIN");
+        
 
     }
 }

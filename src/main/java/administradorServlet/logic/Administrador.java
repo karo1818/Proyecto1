@@ -4,6 +4,12 @@
  */
 package administradorServlet.logic;
 
+import administradorServlet.data.ConexionMySQL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import pacienteServlet.logic.Paciente;
+
 /**
  *
  * @author karom
@@ -11,7 +17,7 @@ package administradorServlet.logic;
 public class Administrador {
 
       private double ID;
-      private double clave;
+      private String clave;
       private double ingreso;
 
     public double getIngreso() {
@@ -30,11 +36,11 @@ public class Administrador {
         this.ID = ID;
     }
 
-    public double getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(double clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
   
@@ -42,7 +48,7 @@ public class Administrador {
  
     
 
-    public Administrador(double i, double c, double in) {
+    public Administrador(double i, String c, double in) {
         
         ID= i;
         clave= c;
@@ -53,6 +59,25 @@ public class Administrador {
     }
 
 
+    
+     public boolean busqAdmi(double id2, String clave2){
+        Connection con = null;
+        Administrador administrador = null;
+        try {
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            CallableStatement statement = con.prepareCall("SELECT * FROM Administrador WHERE id = "+id2+" and clave= '"+clave2+"'");
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                administrador = new Administrador(rs.getDouble("id"), rs.getString("clave"), rs.getDouble("ingreso"));
+            }
+            con.close();
+            return administrador != null;
+        } catch (Exception e) {
+            return false;
+        }
+        
+    }
+    
 
     
     

@@ -1,5 +1,4 @@
 package administradorServlet.presentation;
-
 import administradorServlet.logic.Administrador;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -17,22 +16,23 @@ public class AdministradorServlet extends HttpServlet {
          Administrador a;
          Paciente p;
          Medico m;
-          
-
-         try{
+         
+          try{
 
             a=new Administrador(Double.parseDouble(request.getParameter("ID")),
-            Double.parseDouble(request.getParameter("clave")),           
+            String.valueOf(request.getParameter("clave")),           
             Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("administrador", a);
 
-            m=new Medico(Double.parseDouble(request.getParameter("ID")),
-            Double.parseDouble(request.getParameter("clave")),
+            m=new Medico(
+            Double.parseDouble(request.getParameter("ID")),
+            String.valueOf(request.getParameter("clave")),  
             Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("medico", m);
 
-            p=new Paciente(Double.parseDouble(request.getParameter("ID")),
-            (request.getParameter("clave")),
+            p=new Paciente(
+            Double.parseDouble(request.getParameter("ID")),
+            String.valueOf(request.getParameter("clave")),      
             Double.parseDouble(request.getParameter("ingreso")));
             request.setAttribute("paciente", p);
                
@@ -43,29 +43,30 @@ public class AdministradorServlet extends HttpServlet {
             
                 case 1:
                     
-                    if(a.getID()== 1 && a.getClave()== 1){
+                    if(a.getID()== 1 && a.getClave()== "1"){
                    request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);
             
-                     }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);       }
+                     }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);  }
             
                      break;
                     
                 case 2:    
                       
-                    if( p.busqPaciente(p.getID(), p.getClave()) == true){
+                    if(p.busqPaciente(p.getID(), p.getClave()) == true){
                 
-                  request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
+                    request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
                 
-                  }else{ request.getRequestDispatcher("/FAIL.jsp").forward( request, response);    }
+                    }else{ request.getRequestDispatcher("/FAIL.jsp").forward( request, response);       }
                     
                      break;
                     
                 case 3:    
             
-                     if(a.getID()== 3 && a.getClave()== 3){
+                     if(m.busqMedico(m.getID(), m.getClave())== true){
+                         
                      request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
             
-                     }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);       }
+                     }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);   }
                      
                      break;
                      
@@ -79,6 +80,7 @@ public class AdministradorServlet extends HttpServlet {
          }catch(Exception e){
            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);  
          }
+   
    
 
     }
@@ -121,6 +123,8 @@ public class AdministradorServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    
 
 
 
