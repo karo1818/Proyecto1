@@ -8,6 +8,8 @@ import administradorServlet.data.ConexionMySQL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import pacienteServlet.logic.Paciente;
 
 /**
@@ -65,10 +67,10 @@ public class Administrador {
         Administrador administrador = null;
         try {
             con = ConexionMySQL.ConectarBasedeDatos1();
-            CallableStatement statement = con.prepareCall("SELECT * FROM Administrador WHERE id = "+id2+" and clave= '"+clave2+"'");
+            CallableStatement statement = con.prepareCall("SELECT * FROM Admi WHERE id = "+id2+" and clave= '"+clave2+"'");
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                administrador = new Administrador(rs.getDouble("id"), rs.getString("clave"), rs.getDouble("ingreso"));
+                administrador = new Administrador(rs.getDouble("id"), rs.getString("clave"), 1);
             }
             con.close();
             return administrador != null;
@@ -77,9 +79,32 @@ public class Administrador {
         }
         
     }
-    
+     
+     
+      public ArrayList<Administrador> administradorBD(){
 
+        ArrayList<Administrador> admi = new ArrayList();
+
+        Connection con = null;
+        try {
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            CallableStatement statement = con.prepareCall("SELECT * FROM Admi");
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+
+                Administrador administrador;
+                administrador = new Administrador(rs.getDouble("id"), rs.getString("clave"), rs.getDouble("ingreso"));
+                admi.add(administrador);
+
+            }
+
+            con.close();
+        } catch (SQLException e) {
+        }
+        return admi;
+    }
+ 
     
-    
+   
     
 }

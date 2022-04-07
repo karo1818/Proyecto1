@@ -43,7 +43,7 @@ public class AdministradorServlet extends HttpServlet {
             
                 case 1:
                     
-                    if(a.getID()== 1 && a.getClave()== "1"){
+                    if(a.busqAdmi(a.getID(), a.getClave())== true){
                    request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);
             
                      }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);  }
