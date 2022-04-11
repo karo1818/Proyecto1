@@ -1,37 +1,35 @@
 <%-- 
-    Document   : IngresoMedi
-    Created on : 31 mar 2022, 21:12:14
+    Document   : Registro
+    Created on : 10 abr 2022, 17:55:59
     Author     : karom
 --%>
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="medicoServlet.logic.Medico"%>
-<%
-    Medico m  = (Medico) request.getAttribute("medico");
-    DecimalFormat df = new DecimalFormat("####,###");
- %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    
     <head>
-        <title>Sistema Medico</title>
+        <title>Registro</title>
+        <link href="../css/IngrePaci.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       
-         <link href="../css/IngreMedi.css" rel="stylesheet" type="text/css">
     </head>
-   <body background="../images/fondo.jpg">
+    <body background="../images/fondo.jpg">
        
         
         <div class="header">
             
             <img class="avatar" src="../images/perfil.png" width="256" height="256">
-            <h1 class="user-name" >MEDICO</h1>
+            <h1 class="user-name"> REGISTRO </h1>
+                       
             </div>
         
         
         <div class="segundo">
             <ul class="social">
-                
-               <a class="botom" href="/Proyecto1/index.html">Regresar</a>
-                   
+               
+                                 
+                    <a class="botom" href="/Proyecto1/index.html">Regresar</a>
                 
                 </ul>
             

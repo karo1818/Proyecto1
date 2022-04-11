@@ -1,20 +1,16 @@
 <%-- 
-    Document   : IngresoPaci
-    Created on : 31 mar 2022, 21:12:48
+    Document   : RegistroD
+    Created on : 10 abr 2022, 18:51:23
     Author     : karom
 --%>
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="pacienteServlet.logic.Paciente"%>
-<%
-    Paciente p  = (Paciente) request.getAttribute("paciente");
-    DecimalFormat df = new DecimalFormat("####,###");
- %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     
     <head>
         <title>MI PERFIL</title>
-        <link href="../css/IngrePaci.css" rel="stylesheet" type="text/css">
+        <link href="../css/IngreMedi.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       
     </head>
@@ -24,7 +20,7 @@
         <div class="header">
             
             <img class="avatar" src="../images/perfil.png" width="256" height="256">
-            <h1 class="user-name"> <%=p.getNombre()%></h1>
+            <h1 class="user-name"> </h1>
                        
             </div>
         

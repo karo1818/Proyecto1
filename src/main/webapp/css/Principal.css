@@ -13,6 +13,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     font-family: Verdana;
 }
 
+
+.regis{
+    color: white;
+    text-decoration: none;
+    background-color: black ;
+    color: white;
+    padding: 10px;
+    border-radius: 10%; 
+    border: 2px solid white;
+    
+    
+}
+
+
 div .listas{
     border: 2px solid black;
     display: block;
@@ -55,7 +69,6 @@ h1{
     margin-right: 200px;
     border: 2px solid black;
     background-color: white;
- 
     padding: 30px;
     text-align: center;
 }
@@ -107,4 +120,5 @@ img{
     color: white;
     
 }
+
 

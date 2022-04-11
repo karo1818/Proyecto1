@@ -15,9 +15,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .botom{
     
     width: 150px;
-    background-color: #efb23e
-    
+    background-color: #efb23e;
+    border: solid black 3px;    
+    text-decoration: none;
+    color: black;
 }
+
+
+
+
+
+
 
 .header{
     margin-left: 200px; 

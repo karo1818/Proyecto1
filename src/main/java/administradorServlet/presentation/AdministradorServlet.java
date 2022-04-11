@@ -70,6 +70,10 @@ public class AdministradorServlet extends HttpServlet {
                      
                      break;
                      
+                     
+                     
+      
+                     
                 default:
                 
                    request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
@@ -80,6 +84,8 @@ public class AdministradorServlet extends HttpServlet {
          }catch(Exception e){
            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);  
          }
+          
+          
    
    
 
