@@ -83,6 +83,5 @@ public class ConexionMySQL {
         sentencia.executeUpdate(SQL);
     }
     
-    
-
 }
+

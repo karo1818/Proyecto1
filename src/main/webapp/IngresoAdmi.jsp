@@ -30,7 +30,7 @@
         <div class="LOGIN">
             
          <h2 class="listas" > LISTAS DISPONIBLES<br><br><br><br><br>
-         <a href="">Ciudades</a> <br><br><br>
+         <a href="listaDoctor.jsp">Ciudades</a> <br><br><br>
          <a href="">Especialidades</a> <br><br><br>
          <a href="">Medicos</a> <br><br><br>
          <a class="botom" href="/Proyecto1/index.html">Regresar</a></a> <br><br><br>

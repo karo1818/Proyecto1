@@ -7,8 +7,10 @@ package medicoServlet.logic;
 import administradorServlet.data.ConexionMySQL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 
@@ -22,7 +24,68 @@ public class Medico {
       private String clave;
       private double ingreso;
       private String nombre;
+      private String confirmacion;
+       private int freqCitas;
+      private double costo;
+      private String ciudad;
+      private String horario;
       
+
+
+    public int getFreqCitas() {
+        return freqCitas;
+    }
+
+    public void setFreqCitas(int freqCitas) {
+        this.freqCitas = freqCitas;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+      private String especialidad;
+
+    public Medico(double ID, String clave, String confirmacion) {
+        this.ID = ID;
+        this.clave = clave;
+        this.confirmacion = confirmacion;
+    }
+
+    public String getConfirmacion() {
+        return confirmacion;
+    }
+
+    public void setConfirmacion(String confirmacion) {
+        this.confirmacion = confirmacion;
+    }
 
     public String getNombre() {
         return nombre;
@@ -60,7 +123,17 @@ public class Medico {
   
  
  
-    
+      public Medico(double ID, String clave, double ingreso, String nombre, String especialidad, String ciudad, String horario, int freqCitas, double costo) {
+        this.ID = ID;
+        this.clave = clave;
+        this.ingreso = ingreso;
+        this.nombre = nombre;
+        this.especialidad = especialidad;
+        this.ciudad = ciudad;
+        this.horario = horario;
+        this.freqCitas = freqCitas;
+        this.costo = costo;
+    }
 
     public Medico(double i, String c, double in) {
         
@@ -81,9 +154,15 @@ public class Medico {
     public Medico() {
         
     }
+    
+        @Override
+    public String toString() {
+        return "Medico{" + "ID=" + ID + ", clave=" + clave + ", ingreso=" + ingreso + ", nombre=" + nombre + ", especialidad=" + especialidad + ", ciudad=" + ciudad + ", horario=" + horario + ", freqCitas=" + freqCitas + ", costo=" + costo + '}';
+    }
+    
+    
 
-
-    public boolean busqMedico(double id2, String clave2){
+public Medico busqMedico(double id2, String clave2){
         Connection con = null;
         Medico medicos = null;
         try {
@@ -94,40 +173,50 @@ public class Medico {
                 medicos = new Medico(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 3);
             }
             con.close();
-            return medicos != null;
+            return medicos;
         } catch (SQLException e) {
-            return false;
+            return null;
         }
         
     }
     
     
-    public ArrayList<Medico> medicosBD(){
-
-        ArrayList<Medico> med = new ArrayList();
-
-        Connection con = null;
-        try {
-            con = ConexionMySQL.ConectarBasedeDatos1();
-            CallableStatement statement = con.prepareCall("SELECT * FROM Medico");
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-
-                Medico medi;
-                medi = new Medico(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), rs.getDouble("ingreso"));
-                med.add(medi);
-
-            }
-
-            con.close();
-        } catch (SQLException e) {
-        }
-        return med;
-    }
-    
  
     
+    public void insertMed(Medico medi){
+        Connection con = null;
+        try{
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            Statement statement = con.createStatement();
+        
+            statement.executeUpdate("INSERT INTO Medico(id, clave) values ("+medi.getID()+", '"+medi.getClave()+"')");
+            
+            con.close();
+        }catch (SQLException e) {
+            e.getSQLState();
+        }
+    }
     
+    
+        
+    public void updateMed(Medico medi){
+        Connection con = null;
+        try{
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            Statement statement = con.createStatement();
+        
+            statement.executeUpdate("UPDATE Medico SET especialidad = '"+medi.getEspecialidad()+"', ciudad = '"+medi.getCiudad()+"', "
+                    + "horario = '"+medi.getHorario()+"', frecuenciaCitas = "+medi.getFreqCitas()+", costo = "+medi.getCosto()+" WHERE id = "+medi.getID());
+            
+            con.close();
+        }catch (SQLException e) {
+            e.getSQLState();
+        }
+    }
+    
+    
+
+
     
     
 }
