@@ -1,46 +1,38 @@
 <%-- 
-    Document   : IngresoPaci
-    Created on : 31 mar 2022, 21:12:48
+    Document   : Busqueda
+    Created on : 13 abr 2022, 20:00:44
     Author     : karom
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="java.util.List"%>
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="pacienteServlet.logic.Paciente"%>
-<%
-    Paciente p  = (Paciente) request.getAttribute("paciente");
-    DecimalFormat df = new DecimalFormat("####,###");
-    
 
- %>
- 
+<%@page import="pacienteServlet.logic.Paciente"%>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 
 <html>
     
     <head>
-        <title>MI PERFIL</title>
+        <title>Busqueda</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
        <form method="POST" name="paciente" action="paciente/registrar">
-           <link href="../css/IngrePaci.css" rel="stylesheet" type="text/css">
+           <link href="css/RegistroP.css" rel="stylesheet" type="text/css">
     </head>
      
-
+<body background="images/fondo.jpg">
     
         <div class="header">
            
-            <img class="avatar" src="../images/perfil.png" width="256" height="256">  
             
-
-            <h1 class="user-name"><%=p.getNombre()%>
-              
-                </h1>
+            
+            <img class="avatar1" src="images/desconocido.png" width="250" height="250">
+            <h1 class="user-name1">SIN REGISTRO </h1>
                     
             </div>
         
         
         <div class="segundo">
-         <label for="cars">Elija una especialidad</label>
+           <label for="cars">Elija una especialidad</label>
 
                 <select>
                   <option value="1">Dermatologia</option>
@@ -69,14 +61,26 @@
             <input type="button" value="Buscar" class="form_input2"  width="100" height="256" >
             
             
+           
+            
+            <div class="cuadro">
+            
+           <br><br><br> <br><br><br> <br><br><br> <br><br><br> <br><br><br> <br><br><br> <br>
+            
+            </div>
             
         </div>
+    
+    
+        
+    
+        
         
          <footer class="footer">
             
             <h2 class="lfooter">PROYECTO PROGRAMADO </h2>
         </footer>
         
-       
+        </body>
     
 </html>

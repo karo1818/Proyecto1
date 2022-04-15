@@ -10,6 +10,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -23,6 +24,35 @@ public class Paciente {
       private double ingreso;
       private String nombre;
       List <Citas> citasPac;
+      private String confirmacion;
+      String codigo;
+
+    public Paciente(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public Paciente(double ID, String clave, String nombre, String confirmacion) {
+        this.ID = ID;
+        this.clave = clave;
+        this.nombre = nombre;
+        this.confirmacion = confirmacion;
+    }
+
+    public String getConfirmacion() {
+        return confirmacion;
+    }
+
+    public void setConfirmacion(String confirmacion) {
+        this.confirmacion = confirmacion;
+    }
 
     public double getIngreso() {
         return ingreso;
@@ -48,6 +78,11 @@ public class Paciente {
         this.clave = clave;
     }
     
+     public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
     public String getNombre(){
         return nombre;
     }
@@ -68,6 +103,10 @@ public class Paciente {
     
     public Paciente() {
     }
+    
+    
+    
+    
 
     @Override
     public String toString() {
@@ -76,7 +115,7 @@ public class Paciente {
 
     
     
-    public boolean busqPaciente(double id2, String clave2){
+  public Paciente busqPacientePTR(double id2, String clave2){
         Connection con = null;
         Paciente paciente = null;
         try {
@@ -87,38 +126,50 @@ public class Paciente {
               paciente = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 2);
             }
             con.close();
-            return paciente != null;
+            return paciente;
         } catch (SQLException e) {
-            return false;
-        }
+            return null;
+       }
         
+  }
+    
+
+  
+    
+    public void insertPac(Paciente paci){
+        Connection con = null;
+        try{
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            Statement statement = con.createStatement();
+        
+            statement.executeUpdate("INSERT INTO Pacientes(id, clave, nombre) values ("+paci.getID()+", '"+paci.getClave()+"', '"+paci.getNombre()+"')");
+            
+            con.close();
+        }catch (SQLException e) {
+            e.getSQLState();
+        }
     }
     
-    
-    public ArrayList<Paciente> pacientesBD(){
-
-        ArrayList<Paciente> per = new ArrayList();
-
+        
+    public void citasList(Paciente paci){
         Connection con = null;
+        citasPac = new ArrayList<>();
         try {
             con = ConexionMySQL.ConectarBasedeDatos1();
-            CallableStatement statement = con.prepareCall("SELECT * FROM Pacientes");
+            CallableStatement statement = con.prepareCall("SELECT * FROM Citas WHERE paciId = "+paci.getID());
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-
-                Paciente cue;
-                cue = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), rs.getDouble("ingreso"));
-                per.add(cue);
-
+                Citas cita;
+                cita = new Citas(rs.getDouble("id"), rs.getString("medicoId"), rs.getString("paciId"), rs.getString("hora"),
+                        rs.getString("dia"), rs.getString("especialidad"), rs.getString("lugar"));
+                citasPac.add(cita);
             }
 
             con.close();
         } catch (SQLException e) {
+            
         }
-        return per;
     }
-    
-    
     
 
   

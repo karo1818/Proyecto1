@@ -4,12 +4,16 @@
         <title>Sistema Citas Medicas</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/Principal.css">
+          <meta http-equiv="Expires" content="0">
+          <meta http-equiv="Last-Modified" content="0">
+          <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+          <meta http-equiv="Pragma" content="no-cache">
+        
     </head>
     <body background="images/fondo.jpg">
-        
+         
          <form method="POST" name="administrador" action="administrador/ingresar">
-         <form method="POST" name="medico" action="medico/RegistroD">
-         <form method="POST" name="paciente" action="paciente/ingresar">
+        
         
          <header  class="header" >
             
@@ -36,10 +40,13 @@
           
             <br>
                 <div class="form_section_buttom">
-                        <input type="submit" name="ingresar" value="Ingresar" class="form_input">
+                        <input type="submit" name="ingresar" value="Ingresar" class="form_input2">
+                        
+                        <a  href="/Proyecto1/Busqueda.jsp">
+                        <input type="button" value="Buscar" class="form_input2">
+                      </a> 
                         </div>
-            
-           
+      
             
             <br><br>
             <div class="selectores">
@@ -58,8 +65,10 @@
             <h2 class="lfooter">Si no posee cuenta registrese aqui </h2>
             
             <h2>
-                 <a class="regis" href="/Proyecto1/RegistroD.jsp">Registrarse como doctor</a> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                 <a class="regis" href="/Proyecto1/RegistroP.jsp">Registrarse como paciente</a>                
+                
+                 
+                 <a  href="/Proyecto1/RegistroD.jsp"> <input type="button" value="Registrarse como doctor" class="form_input2"></a> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                 <a  href="/Proyecto1/RegistroP.jsp"> <input type="button" value="Registrarse como paciente" class="form_input2"></a>                
                 
             </h2>
         </footer>
