@@ -4,6 +4,11 @@
     Author     : karom
 --%>
 
+<%@page import="javax.swing.JOptionPane"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.CallableStatement"%>
+<%@page import="administradorServlet.data.ConexionMySQL"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="pacienteServlet.logic.Paciente"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,31 +36,50 @@
             </div>
         
         
-        <div class="segundo">
+        
            <label for="cars">Elija una especialidad</label>
+           
+        <%Connection con = null;%>
+        <%try {%>
+            <%con = ConexionMySQL.ConectarBasedeDatos1();%>
+            <%CallableStatement statement = con.prepareCall("SELECT * FROM Especi");%>
+            <%ResultSet rs = statement.executeQuery();%>
+            <%int cont=1;%>
+            <select>
+            <%while(rs.next()){ %> 
+                <option value=cont><%= rs.getString(1)%></option>
 
-                <select>
-                  <option value="1">Dermatologia</option>
-                  <option value="2">Cardiologia</option>
-                  <option value="3">Psicologia</option>
-                  <option value="4">Pediatria</option>
-                  <option value="5">Oncologia</option>
-                </select> 
+                <%cont++;%>
+                <%} %>     
+            </select> 
+            <%con.close();%>
+        <%} catch (Exception e) {%>
+            <%JOptionPane.showMessageDialog(null, e.getMessage(), "Lista de especialidades vacia ", JOptionPane.ERROR_MESSAGE);%>
+        <%}%>
+
+
            
            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
            
-            <label for="cars">Elija una provincia:</label>
-            
-                 <select >
-                  <option value="6">Alajuela</option>
-                  <option value="7">San Jose</option>
-                  <option value="8">Cartago</option>
-                  <option value="9">Heredia</option>
-                  <option value="10">Limon</option>
-                  <option value="11">Guanacaste</option>
-                  <option value="12">Puntarenas</option>
+            <label for="cars">Elija una ciudad</label>           
+
+            <%try {%>
+                <%con = ConexionMySQL.ConectarBasedeDatos1();%>
+                <%CallableStatement statement = con.prepareCall("SELECT * FROM Ciudades");%>
+                <%ResultSet rs = statement.executeQuery();%>
+                <%int cont=1;%>
+                <select>
+                <%while(rs.next()){ %> 
+                    <option value=cont><%= rs.getString(1)%></option>
+
+                    <%cont++;%>
+                    <%} %>     
                 </select> 
-            
+                <%con.close();%>
+            <%} catch (Exception e) {%>
+                <%JOptionPane.showMessageDialog(null, e.getMessage(), "Lista de ciudades vacia ", JOptionPane.ERROR_MESSAGE);%>
+            <%}%>
+
              &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
             
             <input type="button" value="Buscar" class="form_input2"  width="100" height="256" >
@@ -69,7 +93,7 @@
             
             </div>
             
-        </div>
+        
     
     
         
