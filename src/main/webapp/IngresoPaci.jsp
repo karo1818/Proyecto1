@@ -67,7 +67,11 @@
              &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
             
             <input type="button" value="Buscar" class="form_input2"  width="100" height="256" >
-            
+             <ul class="social">
+
+               <a class="botom" href="/Proyecto1/index.html">Regresar</a>
+
+              </ul>
             
             
         </div>
