@@ -22,7 +22,7 @@ public class ConexionMySQL {
         try {
             final String Controlador = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             Class.forName(Controlador);
-            final String url_bd = "jdbc:sqlserver://localhost\\MSSQLSERVER01:12980;databaseName=ProyectoCitasMedicas;";
+            final String url_bd = "jdbc:sqlserver://localhost\\MSSQLSERVER01:49692;databaseName=ProyectoCitasMedicas;";
             conexion = DriverManager.getConnection(url_bd, "sa", "password");
             sentencia = conexion.createStatement();
         } catch (ClassNotFoundException | SQLException ex) {

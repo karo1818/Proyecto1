@@ -11,7 +11,7 @@
     <head>
         <title>Sistema Administrador</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      
+         <link href="css/IngreAdmi.css" rel="stylesheet" type="text/css"/>
          <link href="../css/IngreAdmi.css" rel="stylesheet" type="text/css">
     </head >
     <body  background="../images/fondo.jpg">
@@ -30,9 +30,9 @@
         <div class="LOGIN">
             
          <h2 class="listas" > LISTAS DISPONIBLES<br><br><br><br><br>
-         <a href="listaDoctor.jsp">Ciudades</a> <br><br><br>
-         <a href="">Especialidades</a> <br><br><br>
-         <a href="">Medicos</a> <br><br><br>
+         <a href="/Proyecto1/listadoCiud.jsp">Ciudades</a> <br><br><br>
+         <a href="/Proyecto1/listadoEsp.jsp">Especialidades</a> <br><br><br>
+         <a href="/Proyecto1/listadoMed.jsp">Medicos</a> <br><br><br>
          <a class="botom" href="/Proyecto1/index.html">Regresar</a></a> <br><br><br>
          
           </h2>

@@ -23,7 +23,9 @@ import pacienteServlet.logic.Paciente;
  */
 
 @WebServlet(name = "PacienteServlet", urlPatterns = {"/paciente/registrar", "/cursos/add"})
-@MultipartConfig(location="C:\\Users\\karom\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto1\\src\\main\\webapp\\images")
+//@MultipartConfig(location="..Documentos\NetBeansProjects\Proyecto1\src\main\webapp\images")
+
+
 public class PacienteServlet extends HttpServlet {
      
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
