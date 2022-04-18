@@ -17,7 +17,7 @@
         <%int hora = 14;%>
         <%int minutos = 0;%>
         <%while(hora < 18){%>
-        <input type="button" name="citas" class="form_input" value="<%=hora%>:<%=minutos%>">
+        <input type="button" name="citas" class="form_input" value="<%=hora%>:<%=minutos%>" onclick="location.href='NuevaCita.jsp'">
         <%    minutos+=freq;%>
         <%    if(minutos==60){%>
         <%        minutos=0;%>
