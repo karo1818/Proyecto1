@@ -1,5 +1,6 @@
 package administradorServlet.logic;
 
+import java.sql.Date;
 import medicoServlet.logic.Medico;
 
 /*
@@ -24,6 +25,20 @@ public class main {
         System.out.println(med.getCitasPac().toString());
         
         System.out.println("FIN");
+        Date date = new Date(10,12,2022);
+        date.setTime(1400);
+        int freq = 30;
+        int hora = 14;
+        int minutos = 0;
+        while(hora < 18){
+        System.out.println("Hora: "+hora+":"+minutos);    
+            minutos+=freq;
+            if(minutos==60){
+                minutos=0;
+            hora=(hora+1)%24;
+        }
+            
+        }
         
 
     }
