@@ -1,4 +1,4 @@
-<%-- 
+         <%-- 
     Document   : IngresoMedi
     Created on : 31 mar 2022, 21:12:14
     Author     : karom
@@ -86,7 +86,31 @@
             
            <div class="derecha">
                 <h2>Citas </h2>
+                  
+             
+           
+           <br><br>
+           
+          
+            <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                
+              <br><br><br><br>
+                <br><br>
+                <br><br>
+               
+                
+                
+                
+                
+        
+            
                 </div>
+            
+            
              <ul class="social">
 
                <a class="botom" href="/Proyecto1/index.html">Regresar</a>

@@ -35,9 +35,9 @@
                     
             </div>
         
+        <div class="cuadro">
         
-        
-           <label for="cars">Elija una especialidad</label>
+           <label>Elija una especialidad</label>
            
         <%Connection con = null;%>
         <%try {%>
@@ -61,7 +61,7 @@
            
            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
            
-            <label for="cars">Elija una ciudad</label>           
+            <label>Elija una ciudad</label>           
 
             <%try {%>
                 <%con = ConexionMySQL.ConectarBasedeDatos1();%>
@@ -87,7 +87,7 @@
             
            
             
-            <div class="cuadro">
+            
             
            <br><br><br> <br><br><br> <br><br><br> <br><br><br> <br><br><br> <br><br><br> <br>
             

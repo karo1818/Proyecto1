@@ -17,12 +17,11 @@ public class ConexionMySQL {
         
     }
     
-    
  public static Connection ConectarBasedeDatos1() {
         try {
             final String Controlador = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             Class.forName(Controlador);
-            final String url_bd = "jdbc:sqlserver://localhost:1433;databaseName=ProyectoCitasMedicas;";
+            final String url_bd = "jdbc:sqlserver://localhost\\MSSQLSERVER01:12980;databaseName=ProyectoCitasMedicas;";
             conexion = DriverManager.getConnection(url_bd, "sa", "password");
             sentencia = conexion.createStatement();
         } catch (ClassNotFoundException | SQLException ex) {
@@ -30,7 +29,6 @@ public class ConexionMySQL {
         }
         return conexion;
     }
-
 
  
     public ResultSet ejecutableSQL(String sql){  //Info que se va a traer
