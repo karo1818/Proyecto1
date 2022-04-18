@@ -28,9 +28,28 @@ public class main {
 //        System.out.println(med.getCitasPac().toString());
 //        
 //        System.out.println("FIN");
+
+        int freq = 50;
+        int hora = 14;
+        int minutos = 0;
+        while(hora < 18){
+            System.out.println("Hora: "+hora+":"+minutos);            
+            minutos+=freq;
+            if(minutos==60 || (minutos)%60 != 0){
+              if((minutos)%60 != 0)
+                {
+                    System.out.println("Hora: "+hora+":"+minutos);   
+                    minutos=0;
+                    hora=(hora+1)%24;
+                }
+                minutos=0;
+            hora=(hora+1)%24;
+            }
+            
+        }
         
-        LocalDate myObj = LocalDate.now();
-        LocalDate myObj2 = LocalDate.of(2022, Month.APRIL, 19);
+       /*LocalDate myObj = LocalDate.now();
+        LocalDate myObj2 = LocalDate.of(2022, Month.APRIL, 21);
         Date date;
         date = new Date(0,0,0);
         System.out.println(myObj.getDayOfWeek());
@@ -38,7 +57,10 @@ public class main {
         myObj.datesUntil(myObj, Period.ofDays(7));
         System.out.println(myObj.getMonth());
        DateRange datte = new DateRange(myObj , myObj2);
-       System.out.println(datte.toList().toString());
+       System.out.println(datte.toList().toString());*/
+       
+       
+       
 //        int freq = 30;
 //        int hora = 14;
 //        int minutos = 0;

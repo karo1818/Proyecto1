@@ -39,11 +39,20 @@ public class DateRange implements Iterable<LocalDate> {
   public List<LocalDate> toList() { //could also be built from the stream() method
     List<LocalDate> dates = new ArrayList<> ();
     for (LocalDate d = startDate; !d.isAfter(endDate); d = d.plusDays(1)) {
-        if("MONDAY".equals(String.valueOf(d.getDayOfWeek()))){
+        if("MONDAY".equals(String.valueOf(d.getDayOfWeek())) || "TUESDAY".equals(String.valueOf(d.getDayOfWeek()))){
          dates.add(d);
         }
      
     }
     return dates;
   }
+//  public String dias(String dia){
+//      switch(dia){
+//          case "Lunes":
+//              return "MONDAY";
+//             
+//          default:
+//              break;
+//      }
+//  }
 }
