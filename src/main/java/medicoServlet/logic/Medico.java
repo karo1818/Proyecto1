@@ -12,6 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+import pacienteServlet.logic.Citas;
+import pacienteServlet.logic.Paciente;
 
 
 /**
@@ -25,11 +28,11 @@ public class Medico {
       private double ingreso;
       private String nombre;
       private String confirmacion;
-       private int freqCitas;
+      private int freqCitas;
       private double costo;
       private String ciudad;
       private String horario;
-      
+      List <Citas> citasPac;
 
 
     public int getFreqCitas() {
@@ -120,6 +123,11 @@ public class Medico {
     public void setClave(String clave) {
         this.clave = clave;
     }
+
+    public List<Citas> getCitasPac() {
+        return citasPac;
+    }
+    
   
  
  
@@ -214,7 +222,25 @@ public Medico busqMedico(double id2, String clave2){
         }
     }
     
-    
+        public void citasList(int id){
+        Connection con = null;
+        citasPac = new ArrayList<>();
+        try {
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            CallableStatement statement = con.prepareCall("SELECT * FROM Citas WHERE paciId = "+id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Citas cita;
+                cita = new Citas(rs.getDouble("id"), rs.getString("medicoId"), rs.getString("paciId"), rs.getString("hora"),
+                        rs.getString("dia"), rs.getString("especialidad"), rs.getString("ciudad"));
+                citasPac.add(cita);
+            }
+
+            con.close();
+        } catch (SQLException e) {
+            
+        }
+    }
 
 
     
