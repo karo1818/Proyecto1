@@ -83,8 +83,65 @@
              &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
             
             <input type="button" value="Buscar" class="form_input2"  width="100" height="256" >
+            <br><br><br><br><br>
             
-            
+             <div class="div_citas">
+                  <br>
+                  <table class="citas">
+                          <tr>
+                            <th>Nombre</th>
+                            <th>Ciudad</th>
+                            <th>Horario</th>
+                            <th>Costo</th>
+                            <th>Frecuencia de citas</th>
+                            <th>Especialidad</th>
+                          </tr>
+                          <tr>
+                            <td>Karo</td>
+                            <td> Moravia</td>
+                            <td>viernes</td>
+                            <td>1000</td>
+                            <td> 10</td>
+                            <td>Odontologia</td>
+                          </tr>
+                          <tr>
+                            <td>Raquel</td>
+                            <td> Moravia</td>
+                            <td>viernes</td>
+                            <td>1000</td>
+                            <td> 10</td>
+                            <td>Odontologia</td>
+                          </tr>
+                          <tr>
+                            <td>Gabriel</td>
+                           <td> Moravia</td>
+                            <td>viernes</td>
+                            <td>1000</td>
+                            <td> 10</td>
+                            <td>Odontologia</td>
+                          </tr>
+                           <tr>
+                            <td>Jose</td>
+                            <td> Moravia</td>
+                            <td>viernes</td>
+                            <td>1000</td>
+                            <td> 10</td>
+                            <td>Odontologia</td>
+                          </tr>
+                          
+                           <tr>
+                            <td>Camila</td>
+                            <td> Moravia</td>
+                            <td>viernes</td>
+                            <td>1000</td>
+                            <td> 10</td>
+                            <td>Odontologia</td>
+                          </tr>
+                        </table>
+                  <br>
+                   
+                  </div>
+             
            
             
             

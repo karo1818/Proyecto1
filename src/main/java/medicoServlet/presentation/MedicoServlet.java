@@ -16,7 +16,7 @@ import medicoServlet.logic.Medico;
  * @author Usuario
  */
 
-@WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar","/medico/registrar/actualizar" })
+@WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar","/medico/actualizar" })
 public class MedicoServlet extends HttpServlet {
 
      
@@ -29,16 +29,22 @@ public class MedicoServlet extends HttpServlet {
              
             case "/medico/registrar":           
                
-                
-                  
+       
      Medico m;
   
         try{
-            
+       // double ID, String clave, String nombre, String confirmacion, 
+       //int freqCitas, double costo, String ciudad, String horario, String especialidad
          m=new Medico(
             Double.parseDouble(request.getParameter("id")),
-            String.valueOf(request.getParameter("clave")),
-            request.getParameter("confirmacion"));
+            String.valueOf(request.getParameter("clave")),  
+            request.getParameter("nombre"),
+            request.getParameter("confirmacion"),
+            Integer.parseInt(request.getParameter("frecuenciaCitas")) ,
+            Double.parseDouble(request.getParameter("costo")),
+            request.getParameter("ciudad"),
+            request.getParameter("horario"),
+            request.getParameter("especialidad"));
             request.setAttribute("medico", m);   
             
         String clave = m.getClave();
@@ -67,7 +73,7 @@ public class MedicoServlet extends HttpServlet {
                 
                 
                 
-            case "/actualizar" :
+            case "/medico/actualizar":
                 
                 
                 request.getRequestDispatcher("/index.html").forward( request, response);

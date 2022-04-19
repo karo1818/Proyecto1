@@ -32,11 +32,24 @@ public class Medico {
       private double costo;
       private String ciudad;
       private String horario;
+       private String especialidad;
       List <Citas> citasPac;
 
 
     public int getFreqCitas() {
         return freqCitas;
+    }
+
+    public Medico(double ID, String clave, String nombre, String confirmacion, int freqCitas, double costo, String ciudad, String horario, String especialidad) {
+        this.ID = ID;
+        this.clave = clave;
+        this.nombre = nombre;
+        this.confirmacion = confirmacion;
+        this.freqCitas = freqCitas;
+        this.costo = costo;
+        this.ciudad = ciudad;
+        this.horario = horario;
+        this.especialidad = especialidad;
     }
 
     public void setFreqCitas(int freqCitas) {
@@ -74,7 +87,7 @@ public class Medico {
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
-      private String especialidad;
+     
 
     public Medico(double ID, String clave, String confirmacion) {
         this.ID = ID;
@@ -197,7 +210,9 @@ public Medico busqMedico(double id2, String clave2){
             con = ConexionMySQL.ConectarBasedeDatos1();
             Statement statement = con.createStatement();
         
-            statement.executeUpdate("INSERT INTO Medico(id, clave) values ("+medi.getID()+", '"+medi.getClave()+"')");
+            statement.executeUpdate("INSERT INTO Medico(id, clave, nombre,especialidad, ciudad, horario, frecuenciaCitas, costo)"
+             + " values ("+medi.getID()+", '"+medi.getClave()+"','"+medi.getNombre()+"', '"+medi.getEspecialidad()+"',"
+                     + " '"+medi.getCiudad()+"', '"+medi.getHorario() +"', "+medi.getFreqCitas() +","+medi.getCosto()+")");
             
             con.close();
         }catch (SQLException e) {
