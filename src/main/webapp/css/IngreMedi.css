@@ -17,9 +17,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 
 .botom{
-    
+    text-decoration: none;
     width: 150px;
-    background-color: #efb23e;
+    background-color: white;
     border: solid black 3px;
     margin: 20px;
     padding: 10px;
@@ -42,7 +42,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-left: 200px; 
     margin-right: 200px;
     text-align: center;   
-    background-color: white;
+    background-color: #d6d5d0;
     border: 2px solid black;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -99,6 +99,7 @@ div .izquierda {
     text-align: center;
     margin: 10px;
     padding: 10px;
+    margin-left: 150px;
     border: 2px solid black;
    
 }
@@ -112,5 +113,31 @@ div .derecha{
     margin: 10px;
     padding: 10px;
     border: 2px solid black;
+    margin-right: 150px;
    
+}
+
+
+
+
+table {
+   width: 100%;
+   border: 1px solid #000;
+}
+th, td {
+   width: 25%;
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid #000;
+   border-collapse: collapse;
+   padding: 0.3em;
+   caption-side: bottom;
+}
+caption {
+   padding: 0.3em;
+   color: #fff;
+    background: #000;
+}
+th {
+   background: #eee;
 }

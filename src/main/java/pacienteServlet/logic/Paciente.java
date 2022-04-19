@@ -150,6 +150,12 @@ public class Paciente {
         }
     }
     
+    
+    
+
+    
+    
+    
         
     public void citasList(Paciente paci){
         Connection con = null;

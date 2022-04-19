@@ -16,7 +16,7 @@ import medicoServlet.logic.Medico;
  * @author Usuario
  */
 
-@WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar", "/datos/actualizar"})
+@WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar","/medico/registrar/actualizar" })
 public class MedicoServlet extends HttpServlet {
 
      
@@ -30,7 +30,7 @@ public class MedicoServlet extends HttpServlet {
             case "/medico/registrar":           
                
                 
-                    
+                  
      Medico m;
   
         try{
@@ -62,19 +62,19 @@ public class MedicoServlet extends HttpServlet {
        
 
        
-                break;    
+               break;    
                 
                 
                 
                 
-            case "/datos/actualizar":
+            case "/actualizar" :
                 
                 
                 request.getRequestDispatcher("/index.html").forward( request, response);
        
-                break;            
+               break;            
               
-        }
+         }
         
         
         

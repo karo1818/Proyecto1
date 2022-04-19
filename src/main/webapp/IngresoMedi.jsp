@@ -11,7 +11,7 @@
  %>
 <!DOCTYPE html>
 <html>
-    <form method="POST" name="datos" action="datos/actualizar">
+    <form method="POST" name="actualizar" action="actualizar">
     
     <head>
         <title>Sistema Medico</title>
@@ -31,6 +31,9 @@
         
         
         <div class="segundo" >
+            
+         
+            
            
             <div class="izquierda">
                 
@@ -85,40 +88,79 @@
            
             
            <div class="derecha">
-                <h2>Citas </h2>
+               <h2>Informacion de Citas Medicas</h2>
                   
+           <div>
+               
              
+               
+              <p>Filtrar citas por:<input type="text" name="consulta" class="form_input" placeholder="Nombre paciente"> o 
+              <input type="text" name="horario" class="form_input" placeholder="estado">
+              <input type="submit" name="filtrar"  value="Filtrar" class="form_input2"  width="100" height="256" >
+              </p>
+
+  
+              <div class="div_citas">
+                  <br>
+                  <table class="citas">
+                          <tr>
+                            <th>Paciente</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                          </tr>
+                          <tr>
+                            <td>Karo</td>
+                            <td> activo</td>
+                            <td>viernes</td>
+                          </tr>
+                          <tr>
+                            <td>Raquel</td>
+                            <td>inactivo</td>
+                            <td>martes</td>
+                          </tr>
+                          <tr>
+                            <td>Gabriel</td>
+                            <td>activo</td>
+                            <td>lunes</td>
+                          </tr>
+                        </table>
+                  <br>
+                   
+                  </div>
+             
+               
+               </div>
            
-           <br><br>
+           <br>
            
           
-            <br><br>
-                <br><br>
-                <br><br>
-                <br><br>
-                <br><br>
-                
-              <br><br><br><br>
-                <br><br>
-                <br><br>
-               
-                
-                
-                
-                
+     
         
             
                 </div>
             
             
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br> <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                
+                 
              <ul class="social">
 
                <a class="botom" href="/Proyecto1/index.html">Regresar</a>
 
                 </ul>
-            
-            
         </div>
+           
         
          <footer class="footer">
             
