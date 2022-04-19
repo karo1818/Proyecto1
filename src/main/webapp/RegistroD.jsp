@@ -15,8 +15,8 @@
       
     </head>
     <body background="images/fondo.jpg">
-         <form method="POST" name="medico" action="medico/registrar">
-       
+      
+          <form action="medico/registrar" method ="post">
         
         <div class="header">
             
@@ -67,8 +67,7 @@
                         
                         <div class="form_section">  
                     <tr ><td>Ingrese su costo</td><td> <input type="text" name="costo" class="form_input">
-                        </div><br><br>    
-                        
+                        </div><br>   
                    <br><br>                
                                 
                     <input type="submit" name="registrar" value="Registrar" class="form_input">

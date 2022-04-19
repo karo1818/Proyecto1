@@ -30,11 +30,10 @@ public class MedicoServlet extends HttpServlet {
             case "/medico/registrar":           
                
        
-     Medico m;
+                Medico m;
   
-        try{
-       // double ID, String clave, String nombre, String confirmacion, 
-       //int freqCitas, double costo, String ciudad, String horario, String especialidad
+         try{
+      
          m=new Medico(
             Double.parseDouble(request.getParameter("id")),
             String.valueOf(request.getParameter("clave")),  
@@ -65,12 +64,8 @@ public class MedicoServlet extends HttpServlet {
             
             request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
         }
-       
 
-       
                break;    
-                
-                
                 
                 
             case "/medico/actualizar":

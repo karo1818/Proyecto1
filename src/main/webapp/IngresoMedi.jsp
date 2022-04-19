@@ -11,8 +11,8 @@
  %>
 <!DOCTYPE html>
 <html>
-    <form method="POST" name="medico" action="medico/actualizar">
-    
+    <form action="medico/actualizar" method ="post">
+        
     <head>
         <title>Sistema Medico</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -79,7 +79,7 @@
               <input type="text" name="frecuencia" class="form_input" placeholder="Frecuencia de citas">
               
               <br><br>
-            <input type="submit" name="actualizar"  value="Actualizar" class="form_input2"  width="100" height="256" >
+            <input type="submit" name="actualizar"  value="actualizar" class="form_input2"  width="100" height="256" >
 
             
             
