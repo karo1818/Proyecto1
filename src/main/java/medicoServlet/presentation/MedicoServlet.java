@@ -16,25 +16,26 @@ import medicoServlet.logic.Medico;
  * @author Usuario
  */
 
-@WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar","/medico/actualizar" })
+@WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar","/administrador/medico/filtrar" })
 public class MedicoServlet extends HttpServlet {
 
      
     
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
          
+        
+          
    
          switch(request.getServletPath() ){
              
              
             case "/medico/registrar":           
-               
-       
-                Medico m;
-  
+
          try{
       
-         m=new Medico(
+           Medico m;
+          
+            m=new Medico(
             Double.parseDouble(request.getParameter("id")),
             String.valueOf(request.getParameter("clave")),  
             request.getParameter("nombre"),
@@ -44,7 +45,7 @@ public class MedicoServlet extends HttpServlet {
             request.getParameter("ciudad"),
             request.getParameter("horario"),
             request.getParameter("especialidad"));
-            request.setAttribute("medico", m);   
+            request.setAttribute("medico", m);  
             
         String clave = m.getClave();
         String confirmacion = m.getConfirmacion();
@@ -68,19 +69,21 @@ public class MedicoServlet extends HttpServlet {
                break;    
                 
                 
-            case "/medico/actualizar":
-                
-                
-                request.getRequestDispatcher("/index.html").forward( request, response);
-       
-               break;            
+         case "/administrador/medico/filtrar":
+               
               
+             request.getRequestDispatcher("/index.html").forward( request, response);
+              
+               break;            
+          
+                   
          }
-        
-        
-        
+         
+         
+       
     
     }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

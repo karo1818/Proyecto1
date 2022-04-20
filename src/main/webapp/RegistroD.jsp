@@ -15,8 +15,9 @@
       
     </head>
     <body background="images/fondo.jpg">
-      
-          <form action="medico/registrar" method ="post">
+        
+         <form method="POST" name="medico" action="medico/registrar">
+          
         
         <div class="header">
             
@@ -29,7 +30,9 @@
         <div class="segundo">
             <ul class="social">
                 
-                
+                 <tr ><td>Ingrese su foto de perfil: </td><td><input type="file" name="imagen" accept="image/jpg, image/gif, image/png">
+                         
+                         <br><br>
                      <div class="form_section">
                 <tr ><td>Ingrese id: </td><td> <input type="text" name="id" class="form_input">
                      </div><br><br>

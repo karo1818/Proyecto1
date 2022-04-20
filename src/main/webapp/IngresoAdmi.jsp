@@ -11,10 +11,10 @@
     <head>
         <title>Sistema Administrador</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link href="css/IngreAdmi.css" rel="stylesheet" type="text/css"/>
-         <link href="../css/IngreAdmi.css" rel="stylesheet" type="text/css">
+         
+         <link href="/Proyecto1/css/IngreAdmi.css" rel="stylesheet" type="text/css">
     </head >
-    <body  background="../images/fondo.jpg">
+    <body  background="/Proyecto1/images/fondo.jpg">
        
        
          

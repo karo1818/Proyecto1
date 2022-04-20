@@ -222,20 +222,6 @@ public Medico busqMedico(double id2, String clave2){
     
     
         
-    public void updateMed(Medico medi){
-        Connection con = null;
-        try{
-            con = ConexionMySQL.ConectarBasedeDatos1();
-            Statement statement = con.createStatement();
-        
-            statement.executeUpdate("UPDATE Medico SET especialidad = '"+medi.getEspecialidad()+"', ciudad = '"+medi.getCiudad()+"', "
-                    + "horario = '"+medi.getHorario()+"', frecuenciaCitas = "+medi.getFreqCitas()+", costo = "+medi.getCosto()+" WHERE id = "+medi.getID());
-            
-            con.close();
-        }catch (SQLException e) {
-            e.getSQLState();
-        }
-    }
     
         public void citasList(int id){
         Connection con = null;

@@ -28,6 +28,7 @@ body{
 
 
 .header{
+    
     margin-left: 200px; 
     margin-right: 200px;
     flex-basis: 60px;
@@ -35,10 +36,12 @@ body{
     display: block;
     text-align: center;   
     background-color: #9CA6A6;
+    
 }
 
 
 .segundo{
+    
     margin-left: 200px; 
     margin-right: 200px;
     flex-basis: 60px;
