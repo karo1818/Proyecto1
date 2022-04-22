@@ -19,8 +19,10 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="medicoServlet.logic.Medico"%>
+
 <%
     Medico m  = (Medico) request.getAttribute("medico");
+    
 
 %>
  
@@ -42,7 +44,7 @@
         <div class="header">
             
             <img class="avatar" src="../images/perfil.png" width="256" height="256">
-            <h1 class="user-name" ><%=m.getNombre()%></h1>
+            <h1 class="user-name" ><%=m.getNombre()%> </h1>
             </div>
         
         
@@ -54,9 +56,12 @@
                   
            <div>
        
-              <p>Filtrar citas por:<input type="text" name="consulta" class="form_input" placeholder="Nombre paciente"> o 
-              <input type="text" name="horario" class="form_input" placeholder="estado">
-              <input type="submit" name="filtrar"  value="filtrar" class="form_input2"  width="200" height="200" >
+              <p>Filtrar citas por:<input type="text"  class="form_input" placeholder="Nombre paciente"> o 
+              <input type="text"  class="form_input" placeholder="estado">
+              
+             
+                <a href="/Proyecto1/FiltrarMedico.jsp?nombre=<%=m.getNombre()%>%id<%=m.getID()%>width="200" height="200" >Filtrar </a>
+                
               </p>
 
   

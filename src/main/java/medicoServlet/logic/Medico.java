@@ -163,6 +163,13 @@ public class Medico {
         ingreso= in;
     }
     
+    
+    public Medico(double i, String n) {
+        
+        ID= i;
+        nombre= n;
+    }
+    
      public Medico(double i, String c, String n, double in) {
         
         ID= i;

@@ -30,11 +30,11 @@
                                 
                                 
                                 <div class ="padre">
-                                <div class="form_section">
+                                <div class="hijo">
                                     <br><br>
-                                            <input type="text" name="RegistraCiud" class="form_input" placeholder="Nombre de la ciudad"><br><br>
-                                            <input type="submit" name="registrar" value="Registrar ciudad" class="form_input"><br><br>
-                                            <a class="botom" href="/Proyecto1/IngresoAdmi.jsp">Regresar</a></a> <br><br><br>
+                                            <input class="hijo" type="text" name="RegistraCiud" class="form_input" placeholder="Nombre de la ciudad"><br><br>
+                                            <input  class="hijo" type="submit" name="registrar" value="Registrar ciudad" class="form_input"><br><br>
+                                            <a class="hijo" class="botom" href="/Proyecto1/IngresoAdmi.jsp">Regresar</a></a> <br><br><br>
                                             </form>
                                             </div>
                                 

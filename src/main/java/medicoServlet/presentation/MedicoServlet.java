@@ -33,7 +33,7 @@ public class MedicoServlet extends HttpServlet {
 
          try{
       
-           Medico m;
+            Medico m;
           
             m=new Medico(
             Double.parseDouble(request.getParameter("id")),
@@ -71,8 +71,23 @@ public class MedicoServlet extends HttpServlet {
                 
          case "/administrador/medico/filtrar":
                
-              
-             request.getRequestDispatcher("/index.html").forward( request, response);
+
+         
+              try{
+             
+             Medico m;
+          
+             m=new Medico( Double.parseDouble(request.getParameter("id"))
+                    ,request.getParameter("nombre"));
+           
+             request.setAttribute("medico", m);  
+
+            
+             request.getRequestDispatcher("/FiltrarMedico.jsp").forward( request, response);
+             
+              }catch(Exception e){
+              request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+              }
               
                break;            
           
