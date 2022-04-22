@@ -16,7 +16,7 @@ import medicoServlet.logic.Medico;
  * @author Usuario
  */
 
-@WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar","/administrador/medico/filtrar" })
+@WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar","/medico/filtrar" })
 public class MedicoServlet extends HttpServlet {
 
      
@@ -69,28 +69,29 @@ public class MedicoServlet extends HttpServlet {
                break;    
                 
                 
-         case "/administrador/medico/filtrar":
+         case "/medico/filtrar":
                
 
          
-              try{
-             
-             Medico m;
           
-             m=new Medico( Double.parseDouble(request.getParameter("id"))
-                    ,request.getParameter("nombre"));
-           
-             request.setAttribute("medico", m);  
-
+//            mb=new Medico(
+//            request.getParameter("BusqueN"),
+//            request.getParameter("BusqueID"));
+//            request.setAttribute("medicob", mb);  
             
-             request.getRequestDispatcher("/FiltrarMedico.jsp").forward( request, response);
+            String busquedaN= String.valueOf(request.getParameter("BusqueN"));
+            String busquedaID= String.valueOf(request.getParameter("BusqueID"));
+            
+            String prueba = "Ra";
+            
+            request.setAttribute("BusqueN", prueba);
+            request.setAttribute("BusqueID", busquedaID);
+            
+            
+            request.getRequestDispatcher("/FiltrarMedico.jsp").forward( request, response);
              
-              }catch(Exception e){
-              request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-              }
-              
-               break;            
-          
+             
+   
                    
          }
          

@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import medicoServlet.logic.Medico;
 import pacienteServlet.logic.Paciente;
 
@@ -68,6 +69,11 @@ public class AdministradorServlet extends HttpServlet {
                     if(m.busqMedico(m.getID(), m.getClave())!= null){
                         m = m.busqMedico(p.getID(), p.getClave());
                         request.setAttribute("medico", m); 
+                        
+                        HttpSession sesion = request.getSession(true);
+
+                        sesion.setAttribute("userMedi", m);     
+                        
                         request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
             
                      }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);   }

@@ -22,17 +22,36 @@ import pacienteServlet.logic.Paciente;
  * @author karom
  */
 public class Medico {
- 
+
+    public String getNB() {
+        return NB;
+    }
+
+    public void setNB(String NB) {
+        this.NB = NB;
+    }
+
+    public String getEB() {
+        return EB;
+    }
+
+    public void setEB(String EB) {
+        this.EB = EB;
+    }
+      
+      private String NB;
+      private String EB;
+      private String nombre;
       private double ID;
       private String clave;
       private double ingreso;
-      private String nombre;
+      
       private String confirmacion;
       private int freqCitas;
       private double costo;
       private String ciudad;
       private String horario;
-       private String especialidad;
+      private String especialidad;
       List <Citas> citasPac;
 
 
@@ -156,6 +175,9 @@ public class Medico {
         this.costo = costo;
     }
 
+      
+      
+      
     public Medico(double i, String c, double in) {
         
         ID= i;
@@ -164,11 +186,28 @@ public class Medico {
     }
     
     
-    public Medico(double i, String n) {
+    public Medico(double i, String n ,String nb, String eb) {
         
         ID= i;
         nombre= n;
+              NB = nb;
+        EB = eb; 
+            
     }
+    
+      public Medico(String nb, String eb) {
+        
+    
+        NB = nb;
+        EB = eb; 
+            
+    }
+   
+    
+     
+
+    
+    
     
      public Medico(double i, String c, String n, double in) {
         
@@ -182,10 +221,15 @@ public class Medico {
     public Medico() {
         
     }
-    
+
         @Override
     public String toString() {
         return "Medico{" + "ID=" + ID + ", clave=" + clave + ", ingreso=" + ingreso + ", nombre=" + nombre + ", especialidad=" + especialidad + ", ciudad=" + ciudad + ", horario=" + horario + ", freqCitas=" + freqCitas + ", costo=" + costo + '}';
+    }
+    
+    
+    public String toString2() {
+        return "Medico{" + "NB=" + NB + ", EB=" + EB + ", nombre=" + nombre + ", ID=" + ID + '}';
     }
     
     

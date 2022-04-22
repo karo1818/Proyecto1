@@ -12,6 +12,7 @@
     Created on : 31 mar 2022, 21:12:14
     Author     : karom
 --%>
+
 <%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="administradorServlet.data.ConexionMySQL"%>
@@ -22,7 +23,6 @@
 
 <%
     Medico m  = (Medico) request.getAttribute("medico");
-    
 
 %>
  
@@ -39,7 +39,7 @@
     </head>
         <body background="../images/fondo.jpg">
             
-       <form method="POST" name="medico" action="medico/filtrar">
+       <form method="POST" name="medico" action="/Proyecto1/medico/filtrar">
         
         <div class="header">
             
@@ -56,18 +56,25 @@
                   
            <div>
        
-              <p>Filtrar citas por:<input type="text"  class="form_input" placeholder="Nombre paciente"> o 
-              <input type="text"  class="form_input" placeholder="estado">
+              <p>Filtrar citas por:<input type="text" name="BusqueN"  class="form_input" placeholder="Nombre paciente"> o 
+              <input type="text" name="BusqueID" class="form_input" placeholder="estado">
+               
+             
+            
               
              
-                <a href="/Proyecto1/FiltrarMedico.jsp?nombre=<%=m.getNombre()%>%id<%=m.getID()%>width="200" height="200" >Filtrar </a>
-                
+              
+               <input type="submit" name="filtrar" value="filtrar" class="form_input2" width="100" height="256" >
+              
+                   
               </p>
 
   
               <div class="div_citas">
+                                 
+
                   <br>
-                
+    
             <%Connection con = null;%>
             <%try { %>
             <%con = ConexionMySQL.ConectarBasedeDatos1();%>
@@ -100,17 +107,17 @@
                     <%} catch (Exception e) {%>
                         <%JOptionPane.showMessageDialog(null, e.getMessage(), "Lista de medicos vacia ", JOptionPane.ERROR_MESSAGE);%>
                     <%}%>
-
+ 
                   
                   <br>
-                   
+                                
                   </div>
-             
-                    </form>
+                   
                </div>
-           
+
            <br>
-           
+                                   
+
           
          <ul class="social">
 
@@ -119,7 +126,7 @@
                 </ul>
         </div>
            
-        
+      </form> 
          <footer class="footer">
             
             <h2 class="lfooter">PROYECTO PROGRAMADO </h2>

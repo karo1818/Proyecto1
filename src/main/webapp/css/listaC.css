@@ -65,7 +65,7 @@ color: black;
 
 
 .padre {
-  background: yellow;
+ width: 120px;
   height: 150px;
   display: flex;
   justify-content: center;
@@ -73,7 +73,7 @@ color: black;
 }
 
 .hijo {
-  background: red;
+  height: 150px;
   width: 120px;
 }
 
