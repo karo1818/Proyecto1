@@ -85,7 +85,7 @@
             <%con1 = ConexionMySQL.ConectarBasedeDatos1();%>
             <%CallableStatement statement1 = con1.prepareCall("SELECT P.nombre, estado, dia, hora"
                     + " FROM Pacientes P, Citas C, Medico M"
-                    + " WHERE M.id = C.medicoId and P.id = C.paciId and M.nombre= '"+m.getNombre()+"' and P.nombre Like"+"'"+nomBuscar+"%' and C.estado Like"+"'"+BE+"%'" );                                 
+                    + " WHERE M.id = C.medicoId and P.id = C.paciId and M.nombre= '"+m.getNombre()+"' and P.nombre Like"+"'%"+nomBuscar+"%' and C.estado Like"+"'%"+BE+"%'" );                                 
 
 
                             ResultSet rs1 = statement1.executeQuery();

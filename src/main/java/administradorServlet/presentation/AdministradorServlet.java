@@ -54,11 +54,13 @@ public class AdministradorServlet extends HttpServlet {
                      break;
                     
                 case 2:    
-                      
+            
                     if(p.busqPacientePTR(p.getID(), p.getClave()) != null){
                         p = p.busqPacientePTR(p.getID(), p.getClave());
                         request.setAttribute("paciente", p);
                         request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
+                        HttpSession sesion = request.getSession(true);
+                        sesion.setAttribute("userPaci", p);
                 
                     }else{ request.getRequestDispatcher("/FAIL.jsp").forward( request, response);       }
                     

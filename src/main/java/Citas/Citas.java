@@ -1,4 +1,4 @@
-package pacienteServlet.logic;
+package Citas;
 
 import administradorServlet.data.ConexionMySQL;
 import java.sql.Connection;
@@ -7,14 +7,15 @@ import java.sql.Statement;
 
 public class Citas {
     private double id;
-    private String medicoId;
-    private String paciId;
+    private double medicoId;
+    private double paciId;
     private String hora;
     private String dia;
     private String especialidad;
     private String lugar;
+    private String fecha;
 
-    public Citas(double id, String medicoId, String paciId, String hora, String dia, String especialidad, String lugar) {
+    public Citas(double id, double medicoId, double paciId, String hora, String dia, String especialidad, String lugar, String fecha) {
         this.id = id;
         this.medicoId = medicoId;
         this.paciId = paciId;
@@ -22,6 +23,7 @@ public class Citas {
         this.dia = dia;
         this.especialidad = especialidad;
         this.lugar = lugar;
+        this.fecha = fecha;
     }
     public Citas() {
 
@@ -36,19 +38,19 @@ public class Citas {
         this.id = id;
     }
 
-    public String getMedicoId() {
+    public double getMedicoId() {
         return medicoId;
     }
 
-    public void setMedicoId(String medicoId) {
+    public void setMedicoId(double medicoId) {
         this.medicoId = medicoId;
     }
 
-    public String getPaciId() {
+    public double getPaciId() {
         return paciId;
     }
 
-    public void setPaciId(String paciId) {
+    public void setPaciId(double paciId) {
         this.paciId = paciId;
     }
 
@@ -84,6 +86,16 @@ public class Citas {
         this.lugar = lugar;
     }
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Citas{" + "id=" + id + ", medicoId=" + medicoId + ", paciId=" + paciId + ", hora=" + hora + ", dia=" + dia + ", especialidad=" + especialidad + ", lugar=" + lugar + '}';
@@ -94,9 +106,8 @@ public class Citas {
         try{
             con = ConexionMySQL.ConectarBasedeDatos1();
             Statement statement = con.createStatement();
-
-            statement.executeUpdate("INSERT INTO Citas(id, medicoId, paciId, hora, dia, especialidad, lugar) values ("+cita.getId()+", "+cita.getMedicoId()+", "+cita.getPaciId()+","
-                    + " '"+cita.getHora()+"', '"+cita.getDia()+"', '"+cita.getEspecialidad()+"', '"+cita.getLugar()+"')");
+            statement.executeUpdate("INSERT INTO Citas(id, medicoId, paciId, hora, dia, especialidad, ciudad, fecha, estado) values ("+cita.getId()+", "+cita.getMedicoId()+", "+cita.getPaciId()+","
+                    + " '"+cita.getHora()+"', '"+cita.getDia()+"', '"+cita.getEspecialidad()+"', '"+cita.getLugar()+"', '"+cita.getFecha()+"', 'Pendiente')");
 
             con.close();
         }catch (SQLException e) {
@@ -105,3 +116,5 @@ public class Citas {
     }
     
 }
+
+

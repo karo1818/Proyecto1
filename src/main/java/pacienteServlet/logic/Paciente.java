@@ -4,7 +4,7 @@
  */
 package pacienteServlet.logic;
 import administradorServlet.data.ConexionMySQL;
-import pacienteServlet.logic.Citas;
+import Citas.Citas;
 import java.util.List;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -156,26 +156,28 @@ public class Paciente {
     
     
     
-        
-    public void citasList(Paciente paci){
-        Connection con = null;
-        citasPac = new ArrayList<>();
-        try {
-            con = ConexionMySQL.ConectarBasedeDatos1();
-            CallableStatement statement = con.prepareCall("SELECT * FROM Citas WHERE paciId = "+paci.getID());
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Citas cita;
-                cita = new Citas(rs.getDouble("id"), rs.getString("medicoId"), rs.getString("paciId"), rs.getString("hora"),
-                        rs.getString("dia"), rs.getString("especialidad"), rs.getString("lugar"));
-                citasPac.add(cita);
-            }
 
-            con.close();
-        } catch (SQLException e) {
-            
-        }
-    }
+              public void citasList(Paciente paci){
+                    Connection con = null;
+                            citasPac = new ArrayList<>();
+                            try {
+                            con = ConexionMySQL.ConectarBasedeDatos1();
+                            CallableStatement statement = con.prepareCall("SELECT * FROM Citas WHERE paciId = "+paci.getID());
+                            ResultSet rs = statement.executeQuery();
+                            while (rs.next()) {
+                            Citas cita;
+                            cita = new Citas(rs.getDouble("id"), rs.getDouble("medicoId"), rs.getDouble("paciId"), rs.getString("hora"),
+                            rs.getString("dia"), rs.getString("especialidad"), rs.getString("lugar"), rs.getString("fecha"));
+                            citasPac.add(cita);
+                            }
+
+
+
+                            con.close();
+                    } catch (SQLException e) {
+
+            }
+            }
     
 
   

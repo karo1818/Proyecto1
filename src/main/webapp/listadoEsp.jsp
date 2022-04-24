@@ -13,7 +13,7 @@
 
 
 <BODY>
-<form method="POST" name="especiRegistro" action="especialidad/registrar">
+<form method="POST" name="especiRegistro" action="/Proyecto1/especialidad/registrar">
 <H1>Listado de Especialidades </H1>
 <TABLE BORDER="1">
 <TR>

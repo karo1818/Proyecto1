@@ -7,77 +7,65 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Usuario
 */
 *{
-font-family: Serif;
+    font-family: Serif;
 }
-
-
 
 body{
-background-image: url("../images/mapaCR.jpg");
-background-color: salmon;
+    background-image: url("../images/mapaCR.jpg");
+    background-color: salmon;
 }
-
-
 
 H1{
-font-size: 40px;
-text-align: center;
-background-color: burlywood;
+    font-size: 40px;
+    text-align: center;
+    background-color: burlywood;
 }
-
-
 
 td, th{
-border: 10px solid burlywood;
-
-
+    border: 10px solid burlywood;
 
 }
-
-
 
 table{
-font-size: 20px;
-text-align: center;
-background-color: #ffcccc;
-width: 60%;
-border-collapse: separate;
-margin-left: auto;
-margin-right: auto;
-margin-bottom: auto;
+    font-size: 20px;
+    text-align: center;
+    background-color: #ffcccc;
+    width: 60%;
+    border-collapse: separate;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
 }
+
 .botom{
-text-decoration: none;
-width: 100px;
-height: 100px;
-background-color:#ffcc66;
-border: solid burlywood 3px;
-margin-left: auto;
-margin-right: auto;
-margin-bottom: auto;
-padding: 10px;
-color: black;
+    text-decoration: none;
+    width: 100px;
+    height: 100px;
+    background-color:#ffcc66;
+    border: solid burlywood 3px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    padding: 10px;
+    color: black;
+}
+
+.form_section{    
+    text-align: center;
+    display: block;
+    width: 400px;
+    height: 50px;
+}
+
+.form_section2{    
+    text-align: center;
+    display: block;
+    width: 400px;
+    height: 50px;
 }
 
 
-            
-
-
-
-.padre {
- width: 120px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.form_input{
+    width: 400px;
+    height: 50px;
 }
-
-.hijo {
-  height: 150px;
-  width: 120px;
-}
-
-
-
-
-         

@@ -44,7 +44,9 @@ public class MedicoServlet extends HttpServlet {
             Double.parseDouble(request.getParameter("costo")),
             request.getParameter("ciudad"),
             request.getParameter("horario"),
-            request.getParameter("especialidad"));
+            request.getParameter("especialidad"),
+            request.getParameter("horaInicio"),
+            request.getParameter("horaFinal"));
             request.setAttribute("medico", m);  
             
         String clave = m.getClave();

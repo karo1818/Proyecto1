@@ -13,7 +13,7 @@
                     <link href="/Proyecto1/css/listaC.css" rel="stylesheet" type="text/css"/>
                     </HEAD>
                     <BODY>
-                                <form method="POST" name="ciudadRegistro" action="ciudad/registrar">
+                                <form method="POST" name="ciudadRegistro" action="/Proyecto1/ciudad/registrar">
                                 <H1>Listado de Ciudades </H1>
                                 <TABLE BORDER="1">
                                 <TR>
