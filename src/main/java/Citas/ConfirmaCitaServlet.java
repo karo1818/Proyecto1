@@ -32,12 +32,12 @@ public class ConfirmaCitaServlet extends HttpServlet{
             HttpSession sesion = request.getSession(true);
             String hora = String.valueOf(sesion.getAttribute("horaCita"));
             String min = String.valueOf(sesion.getAttribute("minCita"));
-   
+            String fecha = String.valueOf(sesion.getAttribute("fecha"));
            
             Paciente p = (Paciente) sesion.getAttribute("userPaci");
             Medico m = (Medico) sesion.getAttribute("userMedi");
             
-            cit = new Citas(8, m.getID(), p.getID(), hora+":"+min, m.getHorario(), m.getEspecialidad(), m.getCiudad(), "2022/10/25");
+            cit = new Citas(8, m.getID(), p.getID(), hora+":"+min, m.getHorario(), m.getEspecialidad(), m.getCiudad(), fecha);
             request.setAttribute("cita", cit);
             cit.insertCita(cit);
             request.getRequestDispatcher("/IngresoPaci.jsp").forward(request, response);

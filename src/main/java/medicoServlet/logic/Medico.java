@@ -365,36 +365,25 @@ public Medico busqMedico(double id2, String clave2){
             }
 
             }
-        
-        
-        
-        
-        
-        
+  
         public ArrayList<Medico> medicosBD(String especi, String ciudad){
 
 
 
-                ArrayList<Medico> medicos = new ArrayList();
+            ArrayList<Medico> medicos = new ArrayList();
 
 
 
-                Connection con = null;
-                try {
-                con = ConexionMySQL.ConectarBasedeDatos1();
-                CallableStatement statement = con.prepareCall("SELECT * FROM Medico WHERE ciudad='"+ciudad+"' and especialidad='"+especi+"'");
-                ResultSet rs = statement.executeQuery();
-                while (rs.next()) {
-
-
-
-                Medico medico;
-                medico = new Medico(rs.getDouble("id"), rs.getString("clave"), 3, rs.getString("nombre"), rs.getString("especialidad"), rs.getString("ciudad"), rs.getString("horario"), rs.getInt("frecuenciaCitas"), rs.getDouble("costo"), rs.getString("horaInicio"), rs.getString("horaFin"));
-                medicos.add(medico);
-
-
-
-}
+            Connection con = null;
+            try {
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            CallableStatement statement = con.prepareCall("SELECT * FROM Medico WHERE ciudad='"+ciudad+"' and especialidad='"+especi+"'");
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+             Medico medico;
+             medico = new Medico(rs.getDouble("id"), rs.getString("clave"), 3, rs.getString("nombre"), rs.getString("especialidad"), rs.getString("ciudad"), rs.getString("horario"), rs.getInt("frecuenciaCitas"), rs.getDouble("costo"), rs.getString("horaInicio"), rs.getString("horaFin"));
+             medicos.add(medico);
+            }
 
 
 

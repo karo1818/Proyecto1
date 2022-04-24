@@ -39,12 +39,30 @@ body{
     flex-direction: row;
 }
 
+.horarioExte{
+     background-color: #F2A594;
+    font-size:larger;
+    text-decoration:none;
+    color: black;
+    border-radius: 45%;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+}
+
+.horarioDivEx{
+   
+}
+
 .medicos{
-    background-color:#CEF2EF;
-    display: flex;    
-    flex-direction: column;
-    height: 100px;
-    width: 50px;
+    background-color:rgba(11%,60%,43%,.3);
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto; 
+    height: 230px;
+    width: 450px;
+    opacity: 5;
+    border-radius: 10%;
 }
 
 .horas{ 
@@ -81,6 +99,10 @@ body{
 .principal{
     border-bottom-color:lightblue;    
     display: flex;
-    justify-content: flex-start;
+    
     flex-direction: column;
+}
+
+.clear {
+    clear: both;
 }
