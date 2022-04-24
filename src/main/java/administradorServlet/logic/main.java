@@ -21,6 +21,7 @@ import medicoServlet.logic.Medico;
 
 public class main {
     public static void main(String[] args) {
+           
         Medico m = new Medico(125, "GGG", "GGG");
         m = m.busqMedicoId(126);
         String hora = m.getHoraFin();

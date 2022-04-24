@@ -4,6 +4,7 @@
     Author     : gabri
 --%>
 
+<%@page import="Citas.Citas"%>
 <%@page import="administradorServlet.logic.DateRange"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="pacienteServlet.logic.Paciente"%>
@@ -25,6 +26,7 @@
     LocalDate myObj = LocalDate.now();
     LocalDate myObj2 = LocalDate.of(2022, Month.DECEMBER, 31);
     DateRange datte = new DateRange(myObj , myObj2);
+    Citas c = new Citas();
     
 %>
 <!DOCTYPE html>
@@ -67,14 +69,14 @@
             <%int totalHoras = medicos.get(contMed).getHoras().size();%><br><br> 
         </div>  
         <div class="horarioDivEx">            
-            <a class="horarioExte" href="/Proyecto1/horarioExtendido.jsp?hour=<%=medicos.get(contMed).getHoras().get(contHoras).getHour()%>&minn=<%=medicos.get(contMed).getHoras().get(contHoras).getMinute()%>&medId=<%=medicos.get(contMed).getID()%>&fecha=<%=datte.toList(datte.dias(medicos.get(contMed).getHorario())).get(0).toString()%>">Horario Extendido</a>
+            <a class="horarioExte" href="/Proyecto1/horarioExtendido.jsp?medId=<%=medicos.get(contMed).getID()%>">Horario Extendido</a>
         </div>
         <div class="clear"></div>
 
        <div class="horario">
             <%while(contHoras < totalHoras){%>
             
-            <%if(medicos.get(contMed).getHoras().get(contHoras).getHour() == 19){%>
+            <%if(c.citaDisponible(medicos.get(contMed).getID(), medicos.get(contMed).getHoras().get(contHoras).getHour()+":"+medicos.get(contMed).getHoras().get(contHoras).getMinute(), datte.toList(datte.dias(medicos.get(contMed).getHorario())).get(0).toString())){%>
                 <div class="spannDiv">
                 <span class="bg-appointment-disable text12"><%=medicos.get(contMed).getHoras().get(contHoras)%></span></div>
                 <br>
