@@ -30,6 +30,8 @@ public class ConfirmaCitaServlet extends HttpServlet{
     
         try{
             HttpSession sesion = request.getSession(true);
+           
+            
             String hora = String.valueOf(sesion.getAttribute("horaCita"));
             String min = String.valueOf(sesion.getAttribute("minCita"));
             String fecha = String.valueOf(sesion.getAttribute("fecha"));
@@ -42,8 +44,11 @@ public class ConfirmaCitaServlet extends HttpServlet{
             cit.insertCita(cit);
             request.getRequestDispatcher("/IngresoPaci.jsp").forward(request, response);
             
+            
+    
+            
         }catch(Exception e){
-            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+            request.getRequestDispatcher("/index.html").forward( request, response);
         }
     }
     

@@ -25,16 +25,25 @@ protected void processRequest(HttpServletRequest request,HttpServletResponse res
     
             Ciudad ciud;
             try{
+                
+                
             ciud=new Ciudad(request.getParameter("RegistraCiud"));
             request.setAttribute("ciudad", ciud);
             ciud.insertCiud(ciud);
+            
+       
+          
             request.getRequestDispatcher("/listadoCiud.jsp").forward( request, response);
 
-
+           
 
             }catch(Exception e){
+                
             request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+            
             }
+            
+          
 }
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 /**

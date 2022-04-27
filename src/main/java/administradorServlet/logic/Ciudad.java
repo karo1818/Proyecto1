@@ -63,4 +63,8 @@ JOptionPane.showMessageDialog(null, e.getMessage(), "Lista de ciudades vacia ", 
 }
 }
 
+    public boolean isEmpty() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

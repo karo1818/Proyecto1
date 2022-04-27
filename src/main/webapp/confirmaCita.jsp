@@ -52,7 +52,7 @@
             <h2>Nombre del doctor: <%=m.getNombre()%></h2>
             <h2>Dia: <%=m.getHorario()%></h2>
             <h2>Fecha: <%=fecha%></h2>
-            <h2>Hora: <%=hora%>:<%=min%>.</h2>
+            <h2>Hora: <%=hora%>:<%=min%></h2>
             <input id="conf" class="botom" type="submit" name="nuevaCita" value="Confirmar" class="form_input">
                   
         </div>
