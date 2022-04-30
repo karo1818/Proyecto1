@@ -1,4 +1,5 @@
 package medicoServlet.presentation;
+import administradorServlet.data.ConexionBD;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ import medicoServlet.logic.Medico;
 public class MedicoServlet extends HttpServlet {
  
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-
+        ConexionBD bases = new ConexionBD();
         switch(request.getServletPath() ){
   
             case "/medico/registrar":           
@@ -45,7 +46,7 @@ public class MedicoServlet extends HttpServlet {
                     String confirmacion = m.getConfirmacion();
 
                     if(clave.equals(confirmacion)){
-                        m.insertMed(m);
+                        bases.insertMed(m);
                         request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
                     }
         

@@ -3,6 +3,7 @@
     Created on : 23 abr. 2022, 20:58:21
     Author     : gabri
 --%>
+<%@page import="administradorServlet.data.ConexionBD"%>
 <%@page import="Citas.Citas"%>
 <%@page import="administradorServlet.logic.DateRange"%>
 <%@page import="java.time.LocalDate"%>
@@ -14,12 +15,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Medico m = new Medico(125, "GGG", "GGG");
-    m = m.busqMedicoId(Double.parseDouble(request.getParameter("medId")));
+    ConexionBD bases = new ConexionBD();
+    m = bases.busqMedicoId(Double.parseDouble(request.getParameter("medId")));
     
     String ciudad = String.valueOf(request.getParameter("ciudad"));
     String especi = String.valueOf(request.getParameter("especi"));
     HttpSession sesion = request.getSession(true);
-    ArrayList<Medico> medicos = m.medicosBD(especi, ciudad);
+    ArrayList<Medico> medicos = bases.medicosBD(especi, ciudad);
     Paciente p = (Paciente) sesion.getAttribute("userPaci");   
  
     LocalDate myObj = LocalDate.now();

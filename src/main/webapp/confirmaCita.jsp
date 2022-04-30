@@ -3,6 +3,7 @@
     Created on : 17 abr. 2022, 18:55:39
     Author     : gabri
 --%>
+<%@page import="administradorServlet.data.ConexionBD"%>
 <%@page import="administradorServlet.logic.DateRange"%>
 <%@page import="java.time.Month"%>
 <%@page import="java.time.LocalDate"%>
@@ -11,10 +12,10 @@
 <%  String hora = String.valueOf(request.getParameter("hour"));
     String min = String.valueOf(request.getParameter("minn"));
     String fecha = String.valueOf(request.getParameter("fecha"));
-    
+    ConexionBD bases = new ConexionBD();
     
     Medico m = new Medico(125, "NULL", "NULL");
-    m = m.busqMedicoId(Double.parseDouble(request.getParameter("medId")));
+    m = bases.busqMedicoId(Double.parseDouble(request.getParameter("medId")));
     
     LocalDate myObj = LocalDate.now();
     LocalDate myObj2 = LocalDate.of(2022, Month.DECEMBER, 31);

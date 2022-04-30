@@ -108,38 +108,6 @@ public class Paciente {
         return "Paciente{" + "ID=" + ID + ", clave=" + clave + ", ingreso=" + ingreso + ", nombre=" + nombre + '}';
     }
 
-    public Paciente busqPacientePTR(double id2, String clave2){
-        Connection con = null;
-        Paciente paciente = null;
-        try {
-            con = ConexionMySQL.ConectarBasedeDatos1();
-            CallableStatement statement = con.prepareCall("SELECT * FROM Pacientes WHERE Pacientes.id = "+id2+" and Pacientes.clave= '"+clave2+"'");
-            ResultSet rs = statement.executeQuery();
-            while(rs.next()){
-              paciente = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 2);
-            }
-            con.close();
-            return paciente;
-        } catch (SQLException e) {
-            return null;
-       }
-        
-    }
- 
-    public void insertPac(Paciente paci){
-        Connection con = null;
-        try{
-            con = ConexionMySQL.ConectarBasedeDatos1();
-            Statement statement = con.createStatement();
-        
-            statement.executeUpdate("INSERT INTO Pacientes(id, clave, nombre) values ("+paci.getID()+", '"+paci.getClave()+"', '"+paci.getNombre()+"')");
-            
-            con.close();
-        }catch (SQLException e) {
-            e.getSQLState();
-        }
-    }
-
     public void citasList(Paciente paci){
         Connection con = null;
         citasPac = new ArrayList<>();

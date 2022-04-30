@@ -1,4 +1,5 @@
 package administradorServlet.presentation;
+import administradorServlet.data.ConexionBD;
 import administradorServlet.logic.Administrador;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -16,7 +17,8 @@ public class AdministradorServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
         Administrador a;
         Paciente p;
-        Medico m;       
+        Medico m;
+        ConexionBD bases = new ConexionBD();
             try{
                 a=new Administrador(Double.parseDouble(request.getParameter("ID")),
                 String.valueOf(request.getParameter("clave")),           
@@ -42,7 +44,7 @@ public class AdministradorServlet extends HttpServlet {
                 switch(respingreso){
             
                     case 1:                    
-                        if(a.busqAdmi(a.getID(), a.getClave())== true){
+                        if(bases.busqAdmi(a.getID(), a.getClave())== true){
                             request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);            
                         }else{   
                             request.getRequestDispatcher("/FAIL.jsp").forward( request, response);  
@@ -50,8 +52,8 @@ public class AdministradorServlet extends HttpServlet {
                         break;
                     
                     case 2:    
-                        if(p.busqPacientePTR(p.getID(), p.getClave()) != null){
-                            p = p.busqPacientePTR(p.getID(), p.getClave());
+                        if(bases.busqPacientePTR(p.getID(), p.getClave()) != null){
+                            p = bases.busqPacientePTR(p.getID(), p.getClave());
                             request.setAttribute("paciente", p);
                             request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
                             HttpSession sesion = request.getSession(true);
@@ -62,8 +64,8 @@ public class AdministradorServlet extends HttpServlet {
                         break;
                     
                     case 3:    
-                        if(m.busqMedico(m.getID(), m.getClave())!= null){
-                            m = m.busqMedico(p.getID(), p.getClave());
+                        if(bases.busqMedico(m.getID(), m.getClave())!= null){
+                            m = bases.busqMedico(p.getID(), p.getClave());
                             request.setAttribute("medico", m); 
                             HttpSession sesion = request.getSession(true);
                             sesion.setAttribute("userMedi", m);                            

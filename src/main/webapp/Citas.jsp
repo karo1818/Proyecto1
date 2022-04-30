@@ -4,6 +4,7 @@
     Author     : gabri
 --%>
 
+<%@page import="administradorServlet.data.ConexionBD"%>
 <%@page import="Citas.Citas"%>
 <%@page import="administradorServlet.logic.DateRange"%>
 <%@page import="java.time.LocalDate"%>
@@ -19,8 +20,9 @@
     Medico m = new Medico(125, "GGG", "GGG");   
     String ciudad = String.valueOf(request.getParameter("ciudad"));
     String especi = String.valueOf(request.getParameter("especi"));
+    ConexionBD bases = new ConexionBD();
     HttpSession sesion = request.getSession(true);
-    ArrayList<Medico> medicos = m.medicosBD(especi, ciudad);
+    ArrayList<Medico> medicos = bases.medicosBD(especi, ciudad);
     Paciente p = (Paciente) sesion.getAttribute("userPaci");   
  
     LocalDate myObj = LocalDate.now();

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pacienteServlet.presentation;
+import administradorServlet.data.ConexionBD;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.FileSystems;
@@ -29,6 +30,7 @@ import pacienteServlet.logic.Paciente;
 public class PacienteServlet extends HttpServlet {
      
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+        ConexionBD bases = new ConexionBD();
         switch(request.getServletPath() ){
       
             case "/paciente/registrar":
@@ -47,7 +49,7 @@ public class PacienteServlet extends HttpServlet {
                     String confirmacion = p.getConfirmacion();
                     
                     if(clave.equals(confirmacion)){     
-                        p.insertPac(p);
+                        bases.insertPac(p);
                         request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
                     }
         
