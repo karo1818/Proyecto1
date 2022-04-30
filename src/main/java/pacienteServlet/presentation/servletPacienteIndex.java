@@ -27,11 +27,9 @@ public class servletPacienteIndex extends HttpServlet {
         String ciudad = String.valueOf(request.getParameter("ciudad"));
         String especi = String.valueOf(request.getParameter("especi"));
         
-
         request.setAttribute("ciudad", ciudad);
         request.setAttribute("especi", especi);
-        
-       
+              
         request.getRequestDispatcher("/Citas.jsp").forward( request, response);       
     }
      

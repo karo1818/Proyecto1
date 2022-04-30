@@ -20,24 +20,22 @@ import java.time.LocalTime;
  *
  * @author karom
  */
-public class Medico {
-    
-          
-      private String NB;
-      private String EB;
-      private String nombre;
-      private double ID;
-      private String clave;
-      private double ingreso;
-      private String confirmacion;
-      private int freqCitas;
-      private double costo;
-      private String ciudad;
-      private String horario;
-      private String especialidad;
-      List <Citas> citasPac;
-      private String horaFin;
-      private String horaInicio;
+public class Medico {    
+    private String NB;
+    private String EB;
+    private String nombre;
+    private double ID;
+    private String clave;
+    private double ingreso;
+    private String confirmacion;
+    private int freqCitas;
+    private double costo;
+    private String ciudad;
+    private String horario;
+    private String especialidad;
+    List <Citas> citasPac;
+    private String horaFin;
+    private String horaInicio;
 
     public ArrayList<LocalTime> getHoras() {
         return horas;
@@ -47,9 +45,6 @@ public class Medico {
         this.horas = horas;
     }
       ArrayList<LocalTime> horas;
-
-
-    
 
     public String getNB() {
         return NB;
@@ -67,7 +62,6 @@ public class Medico {
         this.EB = EB;
     }
 
-
     public String getHoraFin() {
         return horaFin;
     }
@@ -84,8 +78,6 @@ public class Medico {
         this.horaInicio = horaInicio;
     }
      
-
-
     public int getFreqCitas() {
         return freqCitas;
     }
@@ -104,10 +96,6 @@ public class Medico {
         this.horaFin = horaFin;
     }
     
-    
-   
-    
-
     public void setFreqCitas(int freqCitas) {
         this.freqCitas = freqCitas;
     }
@@ -144,7 +132,6 @@ public class Medico {
         this.especialidad = especialidad;
     }
      
-
     public Medico(double ID, String clave, String confirmacion) {
         this.ID = ID;
         this.clave = clave;
@@ -168,7 +155,6 @@ public class Medico {
     }
     
    
-
     public double getIngreso() {
         return ingreso;
     }
@@ -197,10 +183,7 @@ public class Medico {
         return citasPac;
     }
     
-  
- 
- 
-      public Medico(double ID, String clave, double ingreso, String nombre, String especialidad, String ciudad, String horario, int freqCitas, double costo) {
+    public Medico(double ID, String clave, double ingreso, String nombre, String especialidad, String ciudad, String horario, int freqCitas, double costo) {
         this.ID = ID;
         this.clave = clave;
         this.ingreso = ingreso;
@@ -213,55 +196,42 @@ public class Medico {
     }
       
 
-        public Medico(double ID, String clave, double ingreso, String nombre, String especialidad, String ciudad, String horario, int freqCitas, double costo, String horaInicio, String horaFin) {
-                this.ID = ID;
-                this.clave = clave;
-                this.ingreso = ingreso;
-                this.nombre = nombre;
-                this.especialidad = especialidad;
-                this.ciudad = ciudad;
-                this.horario = horario;
-                this.freqCitas = freqCitas;
-                this.costo = costo;
-                this.horaInicio = horaInicio;
-                this.horaFin = horaFin;
-                creacionDeLosHorarios();
-        }
-
-
-
-      
-      
-      
-    public Medico(double i, String c, double in) {
-        
+    public Medico(double ID, String clave, double ingreso, String nombre, String especialidad, String ciudad, String horario, int freqCitas, double costo, String horaInicio, String horaFin) {
+        this.ID = ID;
+        this.clave = clave;
+        this.ingreso = ingreso;
+        this.nombre = nombre;
+        this.especialidad = especialidad;
+        this.ciudad = ciudad;
+        this.horario = horario;
+        this.freqCitas = freqCitas;
+        this.costo = costo;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        creacionDeLosHorarios();
+    }
+ 
+    public Medico(double i, String c, double in) { 
         ID= i;
         clave= c;
         ingreso= in;
     }
     
     
-    public Medico(double i, String n ,String nb, String eb) {
-        
+    public Medico(double i, String n ,String nb, String eb) {  
         ID= i;
         nombre= n;
-              NB = nb;
-        EB = eb; 
-            
-    }
-    
-      public Medico(String nb, String eb) {
-        
-    
         NB = nb;
         EB = eb; 
             
     }
-   
-
     
-     public Medico(double i, String c, String n, double in) {
-        
+    public Medico(String nb, String eb) {
+        NB = nb;
+        EB = eb;        
+    }
+ 
+    public Medico(double i, String c, String n, double in) { 
         ID= i;
         clave= c;
         nombre=n;
@@ -285,7 +255,7 @@ public class Medico {
     
     
 
-public Medico busqMedico(double id2, String clave2){
+    public Medico busqMedico(double id2, String clave2){
         Connection con = null;
         Medico medicos = null;
         try {
@@ -326,85 +296,71 @@ public Medico busqMedico(double id2, String clave2){
     
         
     
-        public void citasList(int id){
-                Connection con = null;
-                citasPac = new ArrayList<>();
-                try {
-                        con = ConexionMySQL.ConectarBasedeDatos1();
-                        CallableStatement statement = con.prepareCall("SELECT * FROM Citas WHERE paciId = "+id);
-                        ResultSet rs = statement.executeQuery();
-                        while (rs.next()) {
-                        Citas cita;
-                        cita = new Citas(rs.getDouble("id"), rs.getDouble("medicoId"), rs.getDouble("paciId"), rs.getString("hora"),
-                        rs.getString("dia"), rs.getString("especialidad"), rs.getString("ciudad"), rs.getString("fecha"));
-                        citasPac.add(cita);
-                }
+    public void citasList(int id){
+        Connection con = null;
+        citasPac = new ArrayList<>();
+        try {
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            CallableStatement statement = con.prepareCall("SELECT * FROM Citas WHERE paciId = "+id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Citas cita;
+                cita = new Citas(rs.getDouble("id"), rs.getDouble("medicoId"), rs.getDouble("paciId"), rs.getString("hora"),
+                rs.getString("dia"), rs.getString("especialidad"), rs.getString("ciudad"), rs.getString("fecha"));
+                citasPac.add(cita);
+            }
+            con.close();
+        } catch (SQLException e) {
 
-
-
-                con.close();
-                } catch (SQLException e) {
-
-                }
         }
+    }
         
-        public Medico busqMedicoId(double id2){
-            Connection con = null;
-                    Medico medico = null;
-                    try {
-                    con = ConexionMySQL.ConectarBasedeDatos1();
-                    CallableStatement statement = con.prepareCall("SELECT * FROM Medico WHERE Medico.id = "+id2);
-                    ResultSet rs = statement.executeQuery();
-                    while(rs.next()){
-                    medico = new Medico(rs.getDouble("id"), rs.getString("clave"), 3, rs.getString("nombre"), rs.getString("especialidad"), rs.getString("ciudad"), rs.getString("horario"), rs.getInt("frecuenciaCitas"), rs.getDouble("costo"), rs.getString("horaInicio"), rs.getString("horaFin"));
-                    }
-                    con.close();
-                    return medico;
-                    } catch (SQLException e) {
-                    return null;
+    public Medico busqMedicoId(double id2){
+        Connection con = null;
+        Medico medico = null;
+        try {
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            CallableStatement statement = con.prepareCall("SELECT * FROM Medico WHERE Medico.id = "+id2);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                medico = new Medico(rs.getDouble("id"), rs.getString("clave"), 3, rs.getString("nombre"), rs.getString("especialidad"), rs.getString("ciudad"), rs.getString("horario"), rs.getInt("frecuenciaCitas"), rs.getDouble("costo"), rs.getString("horaInicio"), rs.getString("horaFin"));
             }
+            con.close();
+            return medico;
+        } catch (SQLException e) {
+            return null;
+        }
 
-            }
+    }
   
-        public ArrayList<Medico> medicosBD(String especi, String ciudad){
-
-
-
-            ArrayList<Medico> medicos = new ArrayList();
-
-
-
-            Connection con = null;
-            try {
+    public ArrayList<Medico> medicosBD(String especi, String ciudad){
+        ArrayList<Medico> medicos = new ArrayList();
+        Connection con = null;
+        try {
             con = ConexionMySQL.ConectarBasedeDatos1();
             CallableStatement statement = con.prepareCall("SELECT * FROM Medico WHERE ciudad='"+ciudad+"' and especialidad='"+especi+"'");
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-             Medico medico;
-             medico = new Medico(rs.getDouble("id"), rs.getString("clave"), 3, rs.getString("nombre"), rs.getString("especialidad"), rs.getString("ciudad"), rs.getString("horario"), rs.getInt("frecuenciaCitas"), rs.getDouble("costo"), rs.getString("horaInicio"), rs.getString("horaFin"));
-             medicos.add(medico);
+                Medico medico;
+                medico = new Medico(rs.getDouble("id"), rs.getString("clave"), 3, rs.getString("nombre"), rs.getString("especialidad"), rs.getString("ciudad"), rs.getString("horario"), rs.getInt("frecuenciaCitas"), rs.getDouble("costo"), rs.getString("horaInicio"), rs.getString("horaFin"));
+                medicos.add(medico);
             }
-
-
-
             con.close();
-                    } catch (SQLException e) {
-                    }
-                    return medicos;
-                    }
-                    void creacionDeLosHorarios(){
-                    horas = new ArrayList();
-                    LocalTime time = LocalTime.parse(horaInicio);
-                    int horaFinn = Integer.parseInt(horaFin.substring(0, 2));
-                    int freq = this.freqCitas;
-                    while(time.getHour() < horaFinn){
-                    horas.add(time);
-                time = time.plusMinutes(freq);
-            }
-            }
+        } catch (SQLException e) {
+            
+        }
+        return medicos;
+   }
+    
+    void creacionDeLosHorarios(){
+        horas = new ArrayList();
+        LocalTime time = LocalTime.parse(horaInicio);
+        int horaFinn = Integer.parseInt(horaFin.substring(0, 2));
+        int freq = this.freqCitas;
+        while(time.getHour() < horaFinn){
+            horas.add(time);
+            time = time.plusMinutes(freq);
+        }
+    }
         
-
-
-    
-    
 }

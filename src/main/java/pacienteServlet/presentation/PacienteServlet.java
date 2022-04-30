@@ -29,63 +29,37 @@ import pacienteServlet.logic.Paciente;
 public class PacienteServlet extends HttpServlet {
      
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-        
-        
-        
-      switch(request.getServletPath() ){
+        switch(request.getServletPath() ){
       
-          case "/paciente/registrar":
+            case "/paciente/registrar":
       
-          Paciente p;
+                Paciente p;
   
-        try{
+                try{
+                    p=new Paciente(
+                    Double.parseDouble(request.getParameter("id")),
+                    String.valueOf(request.getParameter("clave")),
+                    request.getParameter("nombre"),
+                    request.getParameter("confirmacion"));
+                    request.setAttribute("paciente", p);   
             
-         p=new Paciente(
-            Double.parseDouble(request.getParameter("id")),
-            String.valueOf(request.getParameter("clave")),
-            request.getParameter("nombre"),
-            request.getParameter("confirmacion"));
-            request.setAttribute("paciente", p);   
-            
-        String clave = p.getClave();
-        String confirmacion = p.getConfirmacion();
-              
-         
+                    String clave = p.getClave();
+                    String confirmacion = p.getConfirmacion();
+                    
+                    if(clave.equals(confirmacion)){     
+                        p.insertPac(p);
+                        request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
+                    }
+        
+                    }catch(Exception e){
+                        request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+                    }
+                break;
 
-        if(clave.equals(confirmacion)){
-            
-         p.insertPac(p);
-     
-         request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
- 
         }
-        
-        }catch(Exception e){
- 
-            
-            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-        }
-        break;
-        
-        
-        
-        
-      
-      
-      }
-     
-        
-        
-        
-        
-         
+   
     }
     
-       
-    
-
-
-        
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -125,7 +99,4 @@ public class PacienteServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-
-
 }

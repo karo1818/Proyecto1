@@ -18,88 +18,54 @@ import medicoServlet.logic.Medico;
 
 @WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar","/medico/filtrar" })
 public class MedicoServlet extends HttpServlet {
-
-     
-    
+ 
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-         
-        
-          
-   
-         switch(request.getServletPath() ){
-             
-             
+
+        switch(request.getServletPath() ){
+  
             case "/medico/registrar":           
 
-         try{
-      
-            Medico m;
-          
-            m=new Medico(
-            Double.parseDouble(request.getParameter("id")),
-            String.valueOf(request.getParameter("clave")),  
-            request.getParameter("nombre"),
-            request.getParameter("confirmacion"),
-            Integer.parseInt(request.getParameter("frecuenciaCitas")) ,
-            Double.parseDouble(request.getParameter("costo")),
-            request.getParameter("ciudad"),
-            request.getParameter("horario"),
-            request.getParameter("especialidad"),
-            request.getParameter("horaInicio"),
-            request.getParameter("horaFinal"));
-            request.setAttribute("medico", m);  
+                try{
+                    Medico m;
+                    m=new Medico(
+                    Double.parseDouble(request.getParameter("id")),
+                    String.valueOf(request.getParameter("clave")),  
+                    request.getParameter("nombre"),
+                    request.getParameter("confirmacion"),
+                    Integer.parseInt(request.getParameter("frecuenciaCitas")) ,
+                    Double.parseDouble(request.getParameter("costo")),
+                    request.getParameter("ciudad"),
+                    request.getParameter("horario"),
+                    request.getParameter("especialidad"),
+                    request.getParameter("horaInicio"),
+                    request.getParameter("horaFinal"));
+                    request.setAttribute("medico", m);  
             
-        String clave = m.getClave();
-        String confirmacion = m.getConfirmacion();
-              
-   
+                    String clave = m.getClave();
+                    String confirmacion = m.getConfirmacion();
 
-        if(clave.equals(confirmacion)){
-            
-         m.insertMed(m);
-         
-         request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
+                    if(clave.equals(confirmacion)){
+                        m.insertMed(m);
+                        request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
+                    }
         
-        }
-        
-        }catch(Exception e){
+                    }catch(Exception e){
+                        request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+                    }
+
+                break;    
  
+            case "/medico/filtrar":
+                String busquedaN= String.valueOf(request.getParameter("BusqueN"));
+                String busquedaID= String.valueOf(request.getParameter("BusqueID"));
             
-            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-        }
-
-               break;    
-                
-                
-         case "/medico/filtrar":
-               
-
-         
-          
-//            mb=new Medico(
-//            request.getParameter("BusqueN"),
-//            request.getParameter("BusqueID"));
-//            request.setAttribute("medicob", mb);  
+                String prueba = "Ra";
             
-            String busquedaN= String.valueOf(request.getParameter("BusqueN"));
-            String busquedaID= String.valueOf(request.getParameter("BusqueID"));
-            
-            String prueba = "Ra";
-            
-            request.setAttribute("BusqueN", prueba);
-            request.setAttribute("BusqueID", busquedaID);
-            
-            
-            request.getRequestDispatcher("/FiltrarMedico.jsp").forward( request, response);
-             
-             
-   
-                   
-         }
-         
-         
+                request.setAttribute("BusqueN", prueba);
+                request.getRequestDispatcher("/FiltrarMedico.jsp").forward( request, response);
        
-    
+         }
+
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
