@@ -14,89 +14,73 @@ import pacienteServlet.logic.Paciente;
 public class AdministradorServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-         Administrador a;
-         Paciente p;
-         Medico m;
+        Administrador a;
+        Paciente p;
+        Medico m;       
+            try{
+                a=new Administrador(Double.parseDouble(request.getParameter("ID")),
+                String.valueOf(request.getParameter("clave")),           
+                Double.parseDouble(request.getParameter("ingreso")));
+                request.setAttribute("administrador", a);
 
-     
-         
-          try{
-
-            a=new Administrador(Double.parseDouble(request.getParameter("ID")),
-            String.valueOf(request.getParameter("clave")),           
-            Double.parseDouble(request.getParameter("ingreso")));
-            request.setAttribute("administrador", a);
-
-            m=new Medico(
-            Double.parseDouble(request.getParameter("ID")),
-            String.valueOf(request.getParameter("clave")),
-            request.getParameter("nombre"),  
-            Double.parseDouble(request.getParameter("ingreso")));
-            request.setAttribute("medico", m);
-            p=new Paciente(
-            Double.parseDouble(request.getParameter("ID")),
-            String.valueOf(request.getParameter("clave")),
-            request.getParameter("nombre"),
-            Double.parseDouble(request.getParameter("ingreso")));
-            request.setAttribute("paciente", p);
+                m=new Medico(
+                Double.parseDouble(request.getParameter("ID")),
+                String.valueOf(request.getParameter("clave")),
+                request.getParameter("nombre"),  
+                Double.parseDouble(request.getParameter("ingreso")));
+                request.setAttribute("medico", m);
+                
+                p=new Paciente(
+                Double.parseDouble(request.getParameter("ID")),
+                String.valueOf(request.getParameter("clave")),
+                request.getParameter("nombre"),
+                Double.parseDouble(request.getParameter("ingreso")));
+                request.setAttribute("paciente", p);
            
-            int respingreso=(int) a.getIngreso();
+                int respingreso=(int) a.getIngreso();
             
-            switch(respingreso){
+                switch(respingreso){
             
-                case 1:
+                    case 1:                    
+                        if(a.busqAdmi(a.getID(), a.getClave())== true){
+                            request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);            
+                        }else{   
+                            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);  
+                        }            
+                        break;
                     
-                    if(a.busqAdmi(a.getID(), a.getClave())== true){
-                   request.getRequestDispatcher("/IngresoAdmi.jsp").forward( request, response);
-            
-                     }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);  }
-            
-                     break;
+                    case 2:    
+                        if(p.busqPacientePTR(p.getID(), p.getClave()) != null){
+                            p = p.busqPacientePTR(p.getID(), p.getClave());
+                            request.setAttribute("paciente", p);
+                            request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
+                            HttpSession sesion = request.getSession(true);
+                            sesion.setAttribute("userPaci", p);               
+                        }else{ 
+                            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);       
+                        }
+                        break;
                     
-                case 2:    
-            
-                    if(p.busqPacientePTR(p.getID(), p.getClave()) != null){
-                        p = p.busqPacientePTR(p.getID(), p.getClave());
-                        request.setAttribute("paciente", p);
-                        request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
-                        HttpSession sesion = request.getSession(true);
-                        sesion.setAttribute("userPaci", p);
-                
-                    }else{ request.getRequestDispatcher("/FAIL.jsp").forward( request, response);       }
-                    
-                     break;
-                    
-                case 3:    
-            
-                    if(m.busqMedico(m.getID(), m.getClave())!= null){
-                        m = m.busqMedico(p.getID(), p.getClave());
-                        request.setAttribute("medico", m); 
-                        
-                        HttpSession sesion = request.getSession(true);
-
-                        sesion.setAttribute("userMedi", m);     
-                        
-                        request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
-            
-                     }else{   request.getRequestDispatcher("/FAIL.jsp").forward( request, response);   }
-                     
-                     break; 
-      
-                     
-                default:
-                
-                  request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response); 
-                    break;
+                    case 3:    
+                        if(m.busqMedico(m.getID(), m.getClave())!= null){
+                            m = m.busqMedico(p.getID(), p.getClave());
+                            request.setAttribute("medico", m); 
+                            HttpSession sesion = request.getSession(true);
+                            sesion.setAttribute("userMedi", m);                            
+                            request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);            
+                        }else{   
+                            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);   
+                        }   
+                        break;  
+                    default:
+                        request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response); 
+                        break;
                     
             }
             
-         }catch(Exception e){
-           request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
-         }
-          
-          
-   
-   
+            }catch(Exception e){
+                request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
+            }
 
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -138,9 +122,5 @@ public class AdministradorServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    
-
-
 
 }
