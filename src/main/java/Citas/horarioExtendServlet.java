@@ -32,12 +32,11 @@ public class horarioExtendServlet extends HttpServlet{
         
         sesion.getAttribute("minn");
   
-        
         request.getRequestDispatcher("/confirmaCita.jsp.jsp").forward( request, response);
         
         }catch(Exception e){
            request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
-         }
+        }
     }
           
  // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

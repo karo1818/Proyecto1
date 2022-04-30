@@ -18,9 +18,9 @@ import pacienteServlet.logic.Paciente;
  */
 public class Administrador {
 
-      private double ID;
-      private String clave;
-      private double ingreso;
+    private double ID;
+    private String clave;
+    private double ingreso;
 
     public double getIngreso() {
         return ingreso;
@@ -45,13 +45,8 @@ public class Administrador {
     public void setClave(String clave) {
         this.clave = clave;
     }
-  
- 
- 
-    
 
-    public Administrador(double i, String c, double in) {
-        
+    public Administrador(double i, String c, double in) {       
         ID= i;
         clave= c;
         ingreso= in;
@@ -60,9 +55,7 @@ public class Administrador {
     public Administrador() {
     }
 
-
-    
-     public boolean busqAdmi(double id2, String clave2){
+    public boolean busqAdmi(double id2, String clave2){
         Connection con = null;
         Administrador administrador = null;
         try {
@@ -79,10 +72,8 @@ public class Administrador {
         }
         
     }
-     
-     
-      public ArrayList<Administrador> administradorBD(){
-
+         
+    public ArrayList<Administrador> administradorBD(){
         ArrayList<Administrador> admi = new ArrayList();
 
         Connection con = null;
@@ -103,8 +94,5 @@ public class Administrador {
         }
         return admi;
     }
- 
-    
    
-    
 }

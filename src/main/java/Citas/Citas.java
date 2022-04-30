@@ -31,7 +31,6 @@ public class Citas {
 
     }
     
-
     public double getId() {
         return id;
     }
@@ -94,9 +93,7 @@ public class Citas {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-    
-    
+    }      
 
     @Override
     public String toString() {
