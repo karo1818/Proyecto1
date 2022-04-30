@@ -1,0 +1,126 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 1 abr 2022, 0:42:14
+    Author     : karom
+*/
+
+
+
+*{
+    
+    font-family: Verdana;
+}
+
+
+a{
+    text-decoration: none;
+    background-color:  #27a58c ;
+    color: white;
+    padding: 10px;
+    border-radius: 10%; 
+    border: 2px solid black;
+}
+
+div .listas{
+    border: 2px solid black;
+    display: block;
+    padding-top: 50px;
+    margin-left: 200px; 
+    margin-right: 200px;
+    
+}
+
+ .login{
+    margin-left: 200px; 
+    margin-right: 200px;
+    display: block;
+    background-color: #9CA6A6;
+    border: 2px solid black;
+}
+
+.header {
+  
+    margin: 10px;
+    flex-basis: 60px;
+    transition-property: all;
+    display: block;
+    text-align: center;   
+    
+}
+
+body{
+    display: block;
+   
+    
+}
+
+
+h1{
+    margin-left: 200px; 
+    margin-right: 200px;
+    border: 2px solid black;
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+
+.listas{
+    margin-left: 200px; 
+    margin-right: 200px;
+    border: 2px solid black;
+    background-color: #efb23e ;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+.form_section{
+    
+    text-align: center;
+    
+}
+
+.form_input:hover{
+    background-color: #17BF90;
+}
+
+.form_input{
+    width: 400px;
+    height: 50px;
+}
+
+
+.selectores{
+    text-align: center;
+}
+
+.footer{
+    margin-left: 200px; 
+    margin-right: 200px;
+    border: 2px solid white;
+    background-color: black;
+    display: block;
+}
+
+img{
+  padding-left: 70px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+
+
+.lfooter{
+    
+    padding: 30px;
+    font-size: 20px;
+    color: white;
+    
+}

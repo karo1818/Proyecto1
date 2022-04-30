@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          
+        <title>Sistema Citas Medicas</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link rel="stylesheet" href="/Proyecto1/css/Principal.css">
+          <meta http-equiv="Expires" content="0">
+          <meta http-equiv="Last-Modified" content="0">
+          <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+          <meta http-equiv="Pragma" content="no-cache">
+        
+    </head>
+    <body background="/Proyecto1/images/fondo.jpg">
+         
+         <form method="POST" name="administrador" action="administrador/ingresar">    
+         <header  class="header" >             
+           <h1>Sistema de Citas Medicas</h1
+             </header>
+        
+       
+        <div class="login">
+            
+          <h1> LOGIN </h1>
+
+            <br>
+             <div class="form_section">
+                 <input type="text" name="ID" class="form_input" placeholder="Escriba su ID">
+                </div>
+          <br>
+                    
+            <div class="form_section">
+                
+                <input type="password" name="clave" class="form_input" placeholder="Escriba su contraseña">
+                </div>
+                    
+          
+            <br>
+                <div class="form_section_buttom">
+                        <input type="submit" name="ingresar" value="Ingresar" class="form_input2">
+                        
+                        <a  href="/Proyecto1/Busqueda.jsp">
+                        <input type="button" value="Buscar" class="form_input2">
+                      </a> 
+                        </div>
+      
+            
+            <br><br>
+            <div class="selectores">
+                <img src="/Proyecto1/images/iconoD.png"><input id="img1" type="radio" name="ingreso" value="3">Doctor  &nbsp; &nbsp; &nbsp;
+                <img src="/Proyecto1/images/iconoP.png"><input id="img2" type="radio" name="ingreso" value="2">Paciente  &nbsp; &nbsp; &nbsp;
+                 <img src="/Proyecto1/images/iconoA.png"><input id="img3" type="radio" name="ingreso" value="1">Administrador &nbsp; &nbsp; &nbsp;
+                </div>
+            
+            
+            </div>
+        
+        <br> <br>
+        
+        <footer class="footer">
+            
+            <h2 class="lfooter">Si no posee cuenta registrese aqui </h2>
+            
+            <h2>
+                
+                 
+                 <a  href="/Proyecto1/RegistroD.jsp"> <input type="button" value="Registrarse como doctor" class="form_input2"></a> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+                 <a  href="/Proyecto1/RegistroP.jsp"> <input type="button" value="Registrarse como paciente" class="form_input2"></a>                
+                
+            </h2>
+        </footer>
+        
+        
+    </body>
+</html>

@@ -1,0 +1,129 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 11 abr 2022, 13:10:55
+    Author     : karom
+*/
+
+
+*{
+    
+    font-family: Verdana;
+}
+
+
+.cuadro{
+    margin-top: 20px;
+    margin-left: 200px; 
+    margin-right: 200px;
+    background-color: white;    
+    padding: 5px;
+
+    
+}
+
+
+.botom{
+    
+    width: 150px;
+    background-color: #efb23e;
+    border: solid black 3px;
+    margin: 20px;
+    padding: 10px;
+    color: black;
+    
+}
+
+.header{
+    margin-left: 200px; 
+    margin-right: 200px;
+    flex-basis: 60px;
+    transition-property: all;
+    display: block;
+    text-align: center;   
+    background-color: #9CA6A6;
+    
+}
+
+
+.segundo{
+    margin-left: 200px; 
+    margin-right: 200px;
+    flex-basis: 60px;
+    transition-property: all;
+    display: block;
+    text-align: center;   
+    background-color: white;
+    border: 2px solid black;
+    padding: 50px;
+    
+}
+
+
+.avatar{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.user-name{
+    padding: 40px;
+    margin: 10px;
+    font-size: 18px;
+    margin-top: 14px;
+}
+
+.social{
+    
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.social li{
+    display: inline-block;
+    margin: 5px;
+}
+
+.footer{
+    margin-top: 20px;
+    margin-left: 200px; 
+    margin-right: 200px;
+    border: 2px solid white;
+    background-color: black;
+    display: block;
+   
+}
+
+.lfooter{
+    
+    padding: 30px;
+    font-size: 20px;
+    color: white;
+    
+}
+
+
+table {
+   width: 100%;
+   border: 1px solid #000;
+}
+th, td {
+   width: 25%;
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid #000;
+   border-collapse: collapse;
+   padding: 0.3em;
+   caption-side: bottom;
+}
+caption {
+   padding: 0.3em;
+   color: #fff;
+    background: #000;
+}
+th {
+   background: #eee;
+}

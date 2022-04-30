@@ -1,0 +1,86 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19 abr. 2022, 18:29:42
+    Author     : gabri
+*/
+html{
+    background-image: url("../images/citas2.jpg");   
+}
+
+body{
+    
+}
+
+.pacienteInfo{
+    text-align: right;
+    align-items:flex-end;
+    position:relative;
+}
+
+.iconPac{
+    height: 60px;
+    
+}
+
+.bg-appointment-disable{
+    background-color: #D96B62;
+    font-size:larger;
+    border-radius: 50%;
+    height: 35px;
+    width: 150px;
+    text-align: center;
+}
+
+.horario{  
+    display: flex;
+    flex-direction: row;
+}
+
+.medicos{
+    background-color:#CEF2EF;
+    display: flex;    
+    flex-direction: column;
+    height: 100px;
+    width: 50px;
+}
+
+.horas{ 
+    font-size:larger;
+    text-decoration:none;
+    color: black;
+    border-radius: 50%;
+    height: 100px;
+    width: 50px;   
+}
+
+.spannDiv{
+    background-color: #D96B62;
+    font-size:larger;
+    text-decoration:none;
+    color: black;
+    border-radius: 45%;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+}
+
+.horasDiv{
+    background-color: #F2A594;
+    font-size:larger;
+    text-decoration:none;
+    color: black;
+    border-radius: 45%;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+}
+
+.principal{
+    border-bottom-color:lightblue;    
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
