@@ -46,49 +46,16 @@
             <img class="avatar" src='/Proyecto1/medico/image?nombre=<%=m.getNombre()%>'>
             <h1 class="user-name" ><%=m.getNombre()%> </h1>
             </div>
-        
-        
         <div class="segundo" >
-             
-    
-      
                <h2>Informacion de Citas Medicas</h2>
                   
            <div>
-       
               <p>Filtrar citas por:<input type="text" name="BusqueN"  class="form_input" placeholder="Nombre paciente"> o 
               <input type="text" name="BusqueID" class="form_input" placeholder="estado">
-            <img class="avatar" src="../images/perfil.png" width="256" height="256">
-            <h1 class="user-name" ><%=m.getNombre()%> </h1>
-            </div>
-        
-        
-        <div class="segundo" >
-             
-    
-      
-               <h2>Informacion de Citas Medicas</h2>
-                  
-           <div>
-       
-              <p>Filtrar citas por:<input type="text" name="BusqueN"  class="form_input" placeholder="Nombre paciente"> o 
-              <input type="text" name="BusqueID" class="form_input" placeholder="estado">
-               
-             
-            
-              
-             
-              
                <input type="submit" name="filtrar" value="filtrar" class="form_input2" width="100" height="256" >
-              
-                   
               </p>
-
-  
               <div class="div_citas">
-                                 
-
-                  <br>
+              <br>
     
             <%Connection con = null;%>
             <%try { %>
