@@ -89,32 +89,21 @@
                     <%} catch (Exception e) {%>
                         <%JOptionPane.showMessageDialog(null, e.getMessage(), "Lista de medicos vacia ", JOptionPane.ERROR_MESSAGE);%>
                     <%}%>
- 
                   
                   <br>
-                                
                   </div>
-                   
                </div>
 
            <br>
-                                   
-
-          
          <ul class="social">
-
                <a class="botom" href="/Proyecto1/index.html">Regresar</a>
-
                 </ul>
         </div>
-           
       </form> 
          <footer class="footer">
-            
             <h2 class="lfooter">PROYECTO PROGRAMADO </h2>
         </footer>
         
-       
     </body>
 </html>
 
