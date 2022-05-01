@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pacienteServlet.presentation;
+import administradorServlet.data.ConexionBD;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.FileSystems;
@@ -29,74 +30,38 @@ import pacienteServlet.logic.Paciente;
 public class PacienteServlet extends HttpServlet {
      
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-         String viewUrl="";
-         Paciente p;
+        ConexionBD bases = new ConexionBD();
+        switch(request.getServletPath() ){
+      
+            case "/paciente/registrar":
+      
+                Paciente p;
   
-        try{
+                try{
+                    p=new Paciente(
+                    Double.parseDouble(request.getParameter("id")),
+                    String.valueOf(request.getParameter("clave")),
+                    request.getParameter("nombre"),
+                    request.getParameter("confirmacion"));
+                    request.setAttribute("paciente", p);   
             
-         p=new Paciente(
-            Double.parseDouble(request.getParameter("id")),
-            String.valueOf(request.getParameter("clave")),
-            request.getParameter("nombre"),
-            request.getParameter("confirmacion"));
-            request.setAttribute("paciente", p);   
-            
-        String clave = p.getClave();
-        String confirmacion = p.getConfirmacion();
-              
-         
+                    String clave = p.getClave();
+                    String confirmacion = p.getConfirmacion();
+                    
+                    if(clave.equals(confirmacion)){     
+                        bases.insertPac(p);
+                        request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
+                    }
+        
+                    }catch(Exception e){
+                        request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+                    }
+                break;
 
-        if(clave.equals(confirmacion)){
-            
-         p.insertPac(p);
-     
-         request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);
- 
         }
-        
-        }catch(Exception e){
- 
-            
-            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-        }
-        
-         
+   
     }
     
-       private String add(HttpServletRequest request) {     
-        Paciente curso = new Paciente(request.getParameter("imagen"));
-        final Part imagen; 
-        try {
-            imagen = request.getPart("imagen");           
-            imagen.write(curso.getCodigo());
-            return "/IngresoPaci.jsp";
-        } catch (Exception ex) {
-            return "/FAIL.jsp";
-        } 
-    }
-    
-       
-         private String show(HttpServletRequest request) {     
-        Paciente curso = new Paciente("");
-        request.setAttribute("image", curso);
-        
-        return "/presentation/cursos/View.jsp";
-    }
-    
-       
-    
-
-    private String image(HttpServletRequest request,  HttpServletResponse response) {     
-        String codigo = request.getParameter("imagen");
-        Path path = FileSystems.getDefault().getPath("C:\\Users\\karom\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto1\\src\\main\\webapp\\images", codigo);
-        try (OutputStream out = response.getOutputStream()) {
-            Files.copy(path, out);
-            out.flush();
-        } catch (IOException e) {
-     
-        }
-        return null;
-    }    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -136,7 +101,4 @@ public class PacienteServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-
-
 }

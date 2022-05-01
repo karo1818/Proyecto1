@@ -23,20 +23,17 @@ import javax.servlet.http.HttpServletResponse;
 */
 @WebServlet(name = "RegistroEspServlet", urlPatterns = {"/especialidad/registrar"})
 public class RegistroEspServlet extends HttpServlet{
-protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-Especialidad esp;
-try{
-esp=new Especialidad(request.getParameter("RegistraEsp"));
-request.setAttribute("especialidad", esp);
-esp.insertEsp(esp);
-request.getRequestDispatcher("/listadoEsp.jsp").forward( request, response);
-
-
-
-}catch(Exception e){
-request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-}
-}
+    protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+        Especialidad esp;
+        try{
+            esp=new Especialidad(request.getParameter("RegistraEsp"));
+            request.setAttribute("especialidad", esp);
+            esp.insertEsp(esp);
+            request.getRequestDispatcher("/listadoEsp.jsp").forward( request, response);
+        }catch(Exception e){
+            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+        }
+    }
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 /**
 * Handles the HTTP <code>GET</code> method.
@@ -84,6 +81,5 @@ processRequest(request, response);
 public String getServletInfo() {
 return "Short description";
 }// </editor-fold>
-
 
 }

@@ -18,25 +18,7 @@
 
     String BN = String.valueOf(request.getParameter("BusqueN"));
     String BE = String.valueOf(request.getParameter("BusqueID"));
- /*  Medico m;
-   m=new Medico( 
-                    Double.parseDouble(request.getParameter("id")),
-                    request.getParameter("nombre"),
-                    request.getParameter("NB"),
-                    request.getParameter("EB"));
-                    request.setAttribute("medico", m); 
-  
-    Medico mb;                
-    mb  = (Medico) request.getAttribute("medicob");
     
-    
-    
-    m.setNB( request.getParameter("NB") );
- */
-
- // Medico d = new Medico( 11,  "Manuel",  122,  "Manuel",  "Odontologia",  "Guatuso",  "Lunes",  10,  10);
-    
-
 %>
  
 
@@ -113,13 +95,8 @@
                         <% } %>
             
                   <br>
-                
-        
-                  
-                   
                   </div>
-             
-                 
+
                </div>
            
            <br>

@@ -19,13 +19,14 @@ import java.util.ArrayList;
  */
 
 public class Paciente {
-      private double ID;
-      private String clave;
-      private double ingreso;
-      private String nombre;
-      List <Citas> citasPac;
-      private String confirmacion;
-      String codigo;
+    
+    private double ID;
+    private String clave;
+    private double ingreso;
+    private String nombre;
+    List <Citas> citasPac;
+    private String confirmacion;
+    String codigo;
 
     public Paciente(String codigo) {
         this.codigo = codigo;
@@ -86,15 +87,13 @@ public class Paciente {
     public String getNombre(){
         return nombre;
     }
-    public Paciente(double i, String c, double in) {
-        
+    public Paciente(double i, String c, double in) {        
         ID= i;
         clave= c;
         ingreso=in;
     }
     
-    public Paciente(double i, String c, String n, double in) {
-        
+    public Paciente(double i, String c, String n, double in) {        
         ID= i;
         clave= c;
         nombre=n;
@@ -103,82 +102,29 @@ public class Paciente {
     
     public Paciente() {
     }
-    
-    
-    
-    
 
     @Override
     public String toString() {
         return "Paciente{" + "ID=" + ID + ", clave=" + clave + ", ingreso=" + ingreso + ", nombre=" + nombre + '}';
     }
 
-    
-    
-  public Paciente busqPacientePTR(double id2, String clave2){
+    public void citasList(Paciente paci){
         Connection con = null;
-        Paciente paciente = null;
+        citasPac = new ArrayList<>();
         try {
             con = ConexionMySQL.ConectarBasedeDatos1();
-            CallableStatement statement = con.prepareCall("SELECT * FROM Pacientes WHERE Pacientes.id = "+id2+" and Pacientes.clave= '"+clave2+"'");
+            CallableStatement statement = con.prepareCall("SELECT * FROM Citas WHERE paciId = "+paci.getID());
             ResultSet rs = statement.executeQuery();
-            while(rs.next()){
-              paciente = new Paciente(rs.getDouble("id"), rs.getString("clave"), rs.getString("nombre"), 2);
+            while (rs.next()) {
+                Citas cita;
+                cita = new Citas(rs.getDouble("id"), rs.getDouble("medicoId"), rs.getDouble("paciId"), rs.getString("hora"),
+                rs.getString("dia"), rs.getString("especialidad"), rs.getString("lugar"), rs.getString("fecha"));
+                citasPac.add(cita);
             }
             con.close();
-            return paciente;
         } catch (SQLException e) {
-            return null;
-       }
-        
-  }
-    
 
-  
-    
-    public void insertPac(Paciente paci){
-        Connection con = null;
-        try{
-            con = ConexionMySQL.ConectarBasedeDatos1();
-            Statement statement = con.createStatement();
-        
-            statement.executeUpdate("INSERT INTO Pacientes(id, clave, nombre) values ("+paci.getID()+", '"+paci.getClave()+"', '"+paci.getNombre()+"')");
-            
-            con.close();
-        }catch (SQLException e) {
-            e.getSQLState();
         }
     }
-    
-    
-    
 
-    
-    
-    
-
-              public void citasList(Paciente paci){
-                    Connection con = null;
-                            citasPac = new ArrayList<>();
-                            try {
-                            con = ConexionMySQL.ConectarBasedeDatos1();
-                            CallableStatement statement = con.prepareCall("SELECT * FROM Citas WHERE paciId = "+paci.getID());
-                            ResultSet rs = statement.executeQuery();
-                            while (rs.next()) {
-                            Citas cita;
-                            cita = new Citas(rs.getDouble("id"), rs.getDouble("medicoId"), rs.getDouble("paciId"), rs.getString("hora"),
-                            rs.getString("dia"), rs.getString("especialidad"), rs.getString("lugar"), rs.getString("fecha"));
-                            citasPac.add(cita);
-                            }
-
-
-
-                            con.close();
-                    } catch (SQLException e) {
-
-            }
-            }
-    
-
-  
 }

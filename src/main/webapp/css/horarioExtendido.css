@@ -3,15 +3,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 19 abr. 2022, 18:29:42
+    Created on : 23 abr. 2022, 22:17:27
     Author     : gabri
 */
+
 html{
     background-image: url("../images/citas2.jpg");   
 }
 
 body{
     
+}
+h3{
+    background-color:rgba(29%,0%,20%,.5);
+    color:white;
+    width: 310px;
+}
+
+.fechas{
+    display: flex;
+    flex-direction: column;
 }
 
 .pacienteInfo{
@@ -34,32 +45,26 @@ body{
     text-align: center;
 }
 
-.horario{  
+.horario{ 
+    background-color:rgba(34%,13%,12%,.3);
     display: flex;
     flex-direction: row;
+    height: 100px;
+    width: 850px;
+    align-items: center;
+    border-radius: 33%;
 }
 
 .horarioExte{
-    background-color: #F2A594;
+    background-color:rgba(11%,60%,55%,.3);
     font-size:larger;
     text-decoration:none;
     color: black;
     border-radius: 15%; 
-    
-    
     text-align: center;
     left:80%;
 }
 
-.horarioDivEx{
-   background-color: #F2A594;
-   position: relative;
-   left: 35%;
-   top: -125px;
-   width: 148px;
-   height: 30px;
-   border-radius: 15%;   
-}
 
 .medicos{
     background-color:rgba(11%,60%,55%,.3);
@@ -70,6 +75,7 @@ body{
     width: 450px;
     opacity: 5;
     border-radius: 10%;
+    align-items: center;
 }
 
 .horas{ 
@@ -101,6 +107,8 @@ body{
     height: 30px;
     width: 100px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .principal{

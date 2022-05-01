@@ -98,8 +98,52 @@
 
               </ul>
             
-        
+        <div>
+                            
+                            
+            <%Double idPaciente= p.getID(); %>
+       
+            <%Connection con1 = null;%>
+         
+            <%con1 = ConexionMySQL.ConectarBasedeDatos1();%>
+            <%CallableStatement statement1 = con1.prepareCall("SELECT C.estado, C.dia, C.hora, C.fecha, C.ciudad, M.nombre"
+                    + " FROM Citas C, Medico M, Pacientes P"
+                    + " WHERE C.paciId = P.id and P.id ="+idPaciente+" and M.id = C.medicoId" );                                 
+
+
+                            ResultSet rs1 = statement1.executeQuery();
+                            
+                           
+            %>
+
+            <TABLE BORDER="1">
+            <TR>
+            <TH>Estado</TH>
+            <TH>Dia</TH>
+            <TH>Hora</TH>
+            <TH>Fecha</TH>
+            <TH>Ciudad</TH>
+            <TH>Nombre Doctor</TH>
+            </TR>    
+            <%while(rs1.next()){ %>                
+                <TR>
+                <TD> <%= rs1.getString(1)%> </td>
+                <TD> <%= rs1.getString(2)%> </TD>
+                <TD> <%= rs1.getString(3)%> </TD>
+                <TD> <%= rs1.getString(4)%> </TD>
+                <TD> <%= rs1.getString(5)%> </TD>
+                <TD> <%= rs1.getString(6)%> </TD>
+               </TR>
+                            <%} %>         
+             </TABLE>
+                        <%con1.close();%>
+                        
+                      
+            
+           
+                            </div>
         </div>
+            
         </form>    
          <footer class="footer">
             

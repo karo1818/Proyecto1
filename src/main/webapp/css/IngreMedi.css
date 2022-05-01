@@ -51,9 +51,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 
 .avatar{
-    width: 300px;
-    height: 200px;  
-
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
 .user-name{

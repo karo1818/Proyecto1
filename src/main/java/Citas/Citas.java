@@ -31,7 +31,6 @@ public class Citas {
 
     }
     
-
     public double getId() {
         return id;
     }
@@ -94,9 +93,7 @@ public class Citas {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-    
-    
+    }      
 
     @Override
     public String toString() {
@@ -108,8 +105,8 @@ public class Citas {
         try{
             con = ConexionMySQL.ConectarBasedeDatos1();
             Statement statement = con.createStatement();
-            statement.executeUpdate("INSERT INTO Citas(id, medicoId, paciId, hora, dia, especialidad, ciudad, fecha, estado) values ("+cita.getId()+", "+cita.getMedicoId()+", "+cita.getPaciId()+","
-                    + " '"+cita.getHora()+"', '"+cita.getDia()+"', '"+cita.getEspecialidad()+"', '"+cita.getLugar()+"', '"+cita.getFecha()+"', 'Pendiente')");
+            statement.executeUpdate("INSERT INTO Citas(medicoId, paciId, hora, dia, especialidad, ciudad, estado, fecha) values ("+cita.getMedicoId()+", "+cita.getPaciId()+","
+                    + " '"+cita.getHora()+"', '"+cita.getDia()+"', '"+cita.getEspecialidad()+"', '"+cita.getLugar()+"', 'Pendiente', '"+cita.getFecha()+"')");
 
             con.close();
         }catch (SQLException e) {
@@ -117,13 +114,13 @@ public class Citas {
         }
     }
     
-    public boolean citaDisponible(int medId, String hora, String fecha){
+    public boolean citaDisponible(double medId, String hora, String fecha){
         ResultSet rs=null;
         Connection con = null;
         int medID=0;
         try{
             con = ConexionMySQL.ConectarBasedeDatos1();
-            CallableStatement statement = con.prepareCall("SELECT medicoId from Citas where medicoId="+medId+" and hora= '"+hora+"'and fecha='"+fecha+"'");
+            CallableStatement statement = con.prepareCall("SELECT medicoId from Citas where medicoId="+medId+" and hora= '"+hora+"'and fecha='"+fecha+"'and estado='Pendiente'");
             rs = statement.executeQuery();
             while(rs.next()){
                 medID=rs.getInt("medicoId");
@@ -133,9 +130,9 @@ public class Citas {
                 return true;
             }else{
                 return false;
-            }        
+            }
         }catch (SQLException e) {
-        e.getSQLState();
+            e.getSQLState();
         }
         return false;
     }

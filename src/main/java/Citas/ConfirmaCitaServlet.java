@@ -26,6 +26,26 @@ import pacienteServlet.logic.Paciente;
 public class ConfirmaCitaServlet extends HttpServlet{
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
         Citas cit;
+        try{
+            HttpSession sesion = request.getSession(true);
+
+            String hora = String.valueOf(sesion.getAttribute("horaCita"));
+            String min = String.valueOf(sesion.getAttribute("minCita"));
+            String fecha = String.valueOf(sesion.getAttribute("fecha"));
+           
+            Paciente p = (Paciente) sesion.getAttribute("userPaci");
+            Medico m = (Medico) sesion.getAttribute("userMedi");
+            
+            cit = new Citas(8, m.getID(), p.getID(), hora+":"+min, m.getHorario(), m.getEspecialidad(), m.getCiudad(), fecha);
+            request.setAttribute("cita", cit);
+            cit.insertCita(cit);
+            request.getRequestDispatcher("/IngresoPaci.jsp").forward(request, response);
+        }catch(Exception e){
+            request.getRequestDispatcher("/index.html").forward( request, response);
+        }
+    
+    
+    
         
     
         try{

@@ -21,21 +21,20 @@ import javax.servlet.http.HttpServletResponse;
 */
 @WebServlet(name = "RegistroCiudServlet", urlPatterns = {"/ciudad/registrar"})
 public class RegistroCiudServlet extends HttpServlet{
-protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
     
-            Ciudad ciud;
-            try{
+        Ciudad ciud;
+        try{     
             ciud=new Ciudad(request.getParameter("RegistraCiud"));
             request.setAttribute("ciudad", ciud);
             ciud.insertCiud(ciud);
             request.getRequestDispatcher("/listadoCiud.jsp").forward( request, response);
-
-
-
-            }catch(Exception e){
-            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-            }
-}
+        }catch(Exception e){       
+            request.getRequestDispatcher("/FAIL.jsp").forward( request, response);     
+        }
+            
+          
+    }
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 /**
 * Handles the HTTP <code>GET</code> method.
@@ -83,7 +82,5 @@ processRequest(request, response);
 public String getServletInfo() {
 return "Short description";
 }// </editor-fold>
-
-
 
 }

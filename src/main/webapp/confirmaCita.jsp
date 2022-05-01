@@ -3,6 +3,7 @@
     Created on : 17 abr. 2022, 18:55:39
     Author     : gabri
 --%>
+<%@page import="administradorServlet.data.ConexionBD"%>
 <%@page import="administradorServlet.logic.DateRange"%>
 <%@page import="java.time.Month"%>
 <%@page import="java.time.LocalDate"%>
@@ -10,10 +11,11 @@
 <%@page import="pacienteServlet.logic.Paciente"%>
 <%  String hora = String.valueOf(request.getParameter("hour"));
     String min = String.valueOf(request.getParameter("minn"));
-    
+    String fecha = String.valueOf(request.getParameter("fecha"));
+    ConexionBD bases = new ConexionBD();
     
     Medico m = new Medico(125, "NULL", "NULL");
-    m = m.busqMedicoId(Double.parseDouble(request.getParameter("medId")));
+    m = bases.busqMedicoId(Double.parseDouble(request.getParameter("medId")));
     
     LocalDate myObj = LocalDate.now();
     LocalDate myObj2 = LocalDate.of(2022, Month.DECEMBER, 31);
@@ -22,6 +24,7 @@
     Paciente p = (Paciente) sesion.getAttribute("userPaci");    
     int o = 0;
     int total = datte.toList(datte.dias(m.getHorario())).size();
+    
 %>
 
 <%-- 
@@ -45,11 +48,12 @@
             <%sesion.setAttribute("horaCita", hora);%>
             <%sesion.setAttribute("minCita", min);%>
             <%sesion.setAttribute("userMedi", m);%> 
+            <%sesion.setAttribute("fecha", fecha);%>
             <h2>Detalles de la cita</h2>
             <h2>Nombre del doctor: <%=m.getNombre()%></h2>
             <h2>Dia: <%=m.getHorario()%></h2>
-            <h2>Fecha: </h2>
-            <h2>Hora: <%=hora%>:<%=min%>.</h2>
+            <h2>Fecha: <%=fecha%></h2>
+            <h2>Hora: <%=hora%>:<%=min%></h2>
             <input id="conf" class="botom" type="submit" name="nuevaCita" value="Confirmar" class="form_input">
                   
         </div>

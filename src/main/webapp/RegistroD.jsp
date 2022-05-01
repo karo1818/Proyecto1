@@ -15,6 +15,29 @@
 <html>
     
     <head>
+        <title>Registro paciente</title>
+        <link href="css/RegistroP.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+    </head>
+    <body background="images/fondo.jpg">
+        
+         <form method="POST" name="medico" action="medico/registrar">
+          
+        
+        <div class="header">
+            
+           
+            <h1 class="user-name"> REGISTRO MEDICO </h1>
+                       
+            </div>
+        
+        
+         <div class="segundo">
+            <ul class="social">
+                  <div class="form_section">                      
+                  
+                <tr ><td>Ingrese su foto de perfil: </td><td><input type="file" name="imagen" accept="image/jpg, image/gif, image/png">
         <title>Registro doctor</title>
         <link href="css/RegistroP.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

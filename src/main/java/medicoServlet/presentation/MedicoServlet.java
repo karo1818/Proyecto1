@@ -1,4 +1,12 @@
 package medicoServlet.presentation;
+import administradorServlet.data.ConexionBD;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import medicoServlet.logic.Medico;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.FileSystems;
@@ -23,13 +31,16 @@ import medicoServlet.logic.Medico;
  */
 
 @WebServlet(name = "MedicoServlet", urlPatterns = {"/medico/registrar","/medico/filtrar", "/medico/image"})
-@MultipartConfig(location="C:/Users/Usuario/Pictures/Screenshots")
 public class MedicoServlet extends HttpServlet {
+ 
     protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-         final Part imagen;
-         String viewUrl="";
-         switch(request.getServletPath() ){
+        ConexionBD bases = new ConexionBD();
+        final Part imagen;
+        String viewUrl="";
+        switch(request.getServletPath() ){
+  
             case "/medico/registrar":           
+
                 try{
                     Medico m;
                     m=new Medico(
@@ -44,57 +55,42 @@ public class MedicoServlet extends HttpServlet {
                     request.getParameter("especialidad"),
                     request.getParameter("horaInicio"),
                     request.getParameter("horaFinal"));
-                    imagen=request.getPart("imagen");
-                    
                     request.setAttribute("medico", m);  
+                    imagen=request.getPart("imagen");
+            
                     String clave = m.getClave();
                     String confirmacion = m.getConfirmacion();
+
                     if(clave.equals(confirmacion)){
-                         m.insertMed(m);
-                         imagen.write(m.getNombre());
-                         request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
+                        bases.insertMed(m);
+                        imagen.write(m.getNombre());
+                        request.getRequestDispatcher("/IngresoMedi.jsp").forward( request, response);
                     }
         
-                }catch(Exception e){
-                    request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
-                }
+                    }catch(Exception e){
+                        request.getRequestDispatcher("/FAIL.jsp").forward( request, response);
+                    }
+
                 break;    
-                
-                
+ 
             case "/medico/filtrar":
-    //          mb=new Medico(
-    //          request.getParameter("BusqueN"),
-    //          request.getParameter("BusqueID"));
-    //          request.setAttribute("medicob", mb);              
                 String busquedaN= String.valueOf(request.getParameter("BusqueN"));
-                String busquedaID= String.valueOf(request.getParameter("BusqueID"));           
-                String prueba = "Ra";            
+                String busquedaID= String.valueOf(request.getParameter("BusqueID"));
+            
+                String prueba = "Ra";
+            
                 request.setAttribute("BusqueN", prueba);
-                request.setAttribute("BusqueID", busquedaID);     
                 request.getRequestDispatcher("/FiltrarMedico.jsp").forward( request, response);
                 break;
                 
             case "/medico/image":
                 viewUrl=this.image(request,response);
-                break; 
-                
-        }
-         if(viewUrl!=null){
-             request.getRequestDispatcher(viewUrl).forward(request, response);
+                break;
+       
          }
-    }    
+
+    }
     
-    private String image(HttpServletRequest request,  HttpServletResponse response) {     
-        String nombre = request.getParameter("nombre");
-        Path path = FileSystems.getDefault().getPath("C:/Users/Usuario/Pictures/Screenshots", nombre);
-        try (OutputStream out = response.getOutputStream()) {
-            Files.copy(path, out);
-            out.flush();
-        } catch (IOException e) {
-            // handle exception
-        }
-        return null;
-    }   
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -134,5 +130,19 @@ public class MedicoServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private String image(HttpServletRequest request,  HttpServletResponse response) {     
+        String nombre = request.getParameter("nombre");
+        Path path = FileSystems.getDefault().getPath("C:/Users/Usuario/Pictures/Screenshots", nombre);
+        try (OutputStream out = response.getOutputStream()) {
+            Files.copy(path, out);
+            out.flush();
+        } catch (IOException e) {
+            // handle exception
+        }
+        return null;
+    }  
+
+
 }
 

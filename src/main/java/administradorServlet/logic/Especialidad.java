@@ -11,51 +11,39 @@ import java.sql.Connection;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-
-
 /**
 *
 * @author Usuario
 */
 public class Especialidad {
+    
+    private String nombre;
 
+    public Especialidad() {
+    }
 
+    public Especialidad(String nombre) {
+        this.nombre = nombre;
+    }
 
-private String nombre;
+    public String getNombre() {
+        return nombre;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-
-public Especialidad() {
-}
-
-
-
-public Especialidad(String nombre) {
-this.nombre = nombre;
-}
-
-
-
-public String getNombre() {
-return nombre;
-}
-
-
-
-public void setNombre(String nombre) {
-this.nombre = nombre;
-}
-
-public void insertEsp(Especialidad nuevaE){
-Connection con = null;
-try {
-con = ConexionMySQL.ConectarBasedeDatos1();
-Statement statement = con.createStatement();
-statement.executeUpdate("INSERT INTO Especi(nombre) values ('"+nuevaE.getNombre()+"')");
-con.close();
-} catch (Exception e) {
-JOptionPane.showMessageDialog(null, e.getMessage(), "Lista de especialidades vacia ", JOptionPane.ERROR_MESSAGE);
-}
-}
+    public void insertEsp(Especialidad nuevaE){
+        Connection con = null;
+        try {
+            con = ConexionMySQL.ConectarBasedeDatos1();
+            Statement statement = con.createStatement();
+            statement.executeUpdate("INSERT INTO Especi(nombre) values ('"+nuevaE.getNombre()+"')");
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Lista de especialidades vacia ", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
 }

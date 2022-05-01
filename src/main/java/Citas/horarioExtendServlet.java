@@ -1,39 +1,45 @@
-package pacienteServlet.presentation;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package Citas;
+
 import java.io.IOException;
-
 import javax.servlet.ServletException;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import pacienteServlet.logic.Paciente;
-
 
 /**
- * @author Usuario
+ *
+ * @author gabri
  */
-
-@WebServlet(name = "servletPacienteIndex", urlPatterns = {"/pacienteServlet/presentation/ciudades"})
-
-public class servletPacienteIndex extends HttpServlet {
-     
-    protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {       
-        String ciudad = String.valueOf(request.getParameter("ciudad"));
-        String especi = String.valueOf(request.getParameter("especi"));
+@WebServlet(name = "PruebaServlet", urlPatterns = {"/prueba/citas" })
+public class horarioExtendServlet extends HttpServlet{
+    protected void processRequest(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+        try{
+        String hour = String.valueOf(request.getParameter("hour"));
+        String minn = String.valueOf(request.getParameter("minn"));
         
-        request.setAttribute("ciudad", ciudad);
-        request.setAttribute("especi", especi);
-              
-        request.getRequestDispatcher("/Citas.jsp").forward( request, response);       
+        Double medId = Double.parseDouble(request.getParameter("medId"));
+        
+        request.setAttribute("hour", hour);
+        request.setAttribute("minn", minn);
+        request.setAttribute("medId", medId);
+        HttpSession sesion = request.getSession(true);
+        
+        sesion.getAttribute("minn");
+  
+        request.getRequestDispatcher("/confirmaCita.jsp.jsp").forward( request, response);
+        
+        }catch(Exception e){
+           request.getRequestDispatcher("/IngresoPaci.jsp").forward( request, response);  
+        }
     }
-     
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+          
+ // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -60,7 +66,6 @@ public class servletPacienteIndex extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-  
         processRequest(request, response);
     }
 
@@ -75,6 +80,4 @@ public class servletPacienteIndex extends HttpServlet {
     }// </editor-fold>
 
 
-
 }
-
